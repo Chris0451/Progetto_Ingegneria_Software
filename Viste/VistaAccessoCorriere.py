@@ -3,10 +3,10 @@ from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 def VistaAccessoCorriere(QWidget):
     def __init__(self):
         grid_layout = QGridLayout()
-        grid_layout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico), 0, 0)
-        grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne), 0, 1)
-        grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaRitiri), 1, 0)
-        grid_layout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito), 1, 1)
+        grid_layout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico), 0)
+        grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne), 1, 0)
+        grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaRitiri), 1, 1)
+        grid_layout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito), 2)
         self.setLayout(grid_layout)
         self.resize(400, 300)
         self.setWindowTitle("Profilo Corriere")
