@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
+from Vista.VistaPresaInCarico import VistaPresaInCarico
+
 class VistaAccessoCorriere(QWidget):
     
     def __init__(self, parent=None):
@@ -11,7 +13,7 @@ class VistaAccessoCorriere(QWidget):
         grid_layout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito), 3,0)
         self.setLayout(grid_layout)
         self.resize(400, 300)
-        self.setWindowTitle("Profilo Corriere")
+        self.setWindowTitle(f"Profilo Corriere")
 
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)
@@ -20,7 +22,8 @@ class VistaAccessoCorriere(QWidget):
         return button
 
     def go_presaInCarico(self):
-        pass
+        self.presa_in_carico = VistaPresaInCarico()
+        self.presa_in_carico.show()
 
     def go_listaConsegne(self):
         pass
