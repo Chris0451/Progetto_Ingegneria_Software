@@ -1,32 +1,20 @@
-from Utenti.Cliente import Cliente
-from enum import Enum
-import datetime
 class Pacco:
-    destinatario: Cliente
-    mittente: Cliente
-    class StatoPacco(Enum):
-        Transito = 1
-        PressoFiliale = 2
-        Consegnato = 3
-    statoPacco = StatoPacco
-    def __init__ (self, peso, dimensioni, giornoSpedizione, giornoConsegna, destinatario, mittente):
+    def __init__(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente):
+        self.codicePacco = codicePacco
         self.peso = peso
-        self.dimensioni = dimensioni
-        self.giornoSpedizione = giornoSpedizione
-        self.giornoConsegna = giornoConsegna
-        self.destinatario = destinatario
+        self.volume = volume
+        self.tipo = tipo
+        self.metodoPagamento = metodoPagamento
         self.mittente = mittente
-        self.statoPacco = None
-    def setStatoPacco(self, newState):
-        if newState != 1 or newState != 2 or newState != 3:
-            self.statoPacco.value = newState
-    def getPeso(self):
-        return self.peso
-    def getDimensioni(self):
-        return self.dimensioni
-    def getIndirizzoMittente(self):
-        return self.indirizzoMittente
-    def getMittente(self):
-        return self.mittente
-    def getDestinatario(self):
-        return self.destinatario
+        self.destinatario = destinatario
+    def getInfoPacco(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente):
+           print(f"Destinatario: {self.destinatario}\n")
+           print(f"Mittente: {self.mittente}\n")
+           print(f"Codice Pacco: {self.codicePacco}\n")
+           print(f"Peso: {self.peso}\n")
+           print(f"Volume: {self.volume}\n")  
+           print(f"Tipo: {self.tipo}\n")
+           print(f"Metodo Pagamento: {self.metodoPagamento}\n")
+    
+           
+       
