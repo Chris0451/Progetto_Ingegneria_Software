@@ -1,5 +1,5 @@
 class Pacco:
-    def __init__(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente):
+    def __init__(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente, consegna, ritiro):
         self.codicePacco = codicePacco
         self.peso = peso
         self.volume = volume
@@ -7,7 +7,9 @@ class Pacco:
         self.metodoPagamento = metodoPagamento
         self.mittente = mittente
         self.destinatario = destinatario
-    def getInfoPacco(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente):
+        self.consegna = consegna
+        self.ritiro = ritiro
+    def getInfoPacco(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente, consegna, ritiro):
            print(f"Destinatario: {self.destinatario}\n")
            print(f"Mittente: {self.mittente}\n")
            print(f"Codice Pacco: {self.codicePacco}\n")
@@ -15,6 +17,8 @@ class Pacco:
            print(f"Volume: {self.volume}\n")  
            print(f"Tipo: {self.tipo}\n")
            print(f"Metodo Pagamento: {self.metodoPagamento}\n")
+           print(f"Consegna: {self.consegna}\n")
+           print(f"Ritiro: {self.ritiro}\n")
     
            
        
