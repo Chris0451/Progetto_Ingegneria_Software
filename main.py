@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 
-from Viste.VistaAccessoCorriere import VistaAccessoCorriere
+from Vista.VistaAccessoCorriere import VistaAccessoCorriere
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

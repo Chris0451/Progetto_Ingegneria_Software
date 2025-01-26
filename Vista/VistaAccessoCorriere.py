@@ -5,10 +5,10 @@ class VistaAccessoCorriere(QWidget):
     def __init__(self, parent=None):
         super(VistaAccessoCorriere, self).__init__(parent)
         grid_layout = QGridLayout()
-        grid_layout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico), 0)
+        grid_layout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico), 0, 0)
         grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne), 1, 0)
         grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaRitiri), 1, 1)
-        grid_layout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito), 2)
+        grid_layout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito), 2,0)
         self.setLayout(grid_layout)
         self.resize(400, 300)
         self.setWindowTitle("Profilo Corriere")
