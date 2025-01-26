@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
-def VistaAccessoCorriere(QWidget):
-    def __init__(self):
+class VistaAccessoCorriere(QWidget):
+    
+    def __init__(self, parent=None):
+        super(VistaAccessoCorriere, self).__init__(parent)
         grid_layout = QGridLayout()
         grid_layout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico), 0)
         grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne), 1, 0)
