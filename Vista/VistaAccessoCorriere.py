@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSizePolicy, QMainWindow
 
 from Vista.VistaPresaInCarico import VistaPresaInCarico
 
@@ -6,14 +6,16 @@ class VistaAccessoCorriere(QWidget):
     
     def __init__(self, parent=None):
         super(VistaAccessoCorriere, self).__init__(parent)
-        grid_layout = QGridLayout()
-        grid_layout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico), 0, 0,)
-        grid_layout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne), 1, 0)
-        grid_layout.addWidget(self.get_generic_button("Visualizza lista ritiri", self.go_listaRitiri), 2, 0)
-        grid_layout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito), 3,0)
-        self.setLayout(grid_layout)
+        vlayout = QVBoxLayout()
+        hlayout = QHBoxLayout()
+        vlayout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico))
+        hlayout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne))
+        hlayout.addWidget(self.get_generic_button("Visualizza lista ritiri", self.go_listaRitiri))
+        vlayout.addLayout(hlayout)
+        vlayout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito))
+        self.setLayout(vlayout)
         self.resize(400, 300)
-        self.setWindowTitle(f"Profilo Corriere")
+        self.setWindowTitle("Profilo Corriere")
 
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)
