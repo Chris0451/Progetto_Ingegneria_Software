@@ -7,6 +7,6 @@ class Utente:
         self.email = email
         self.identificativo = identificativo
     def getInfoUtente(self):
-        return f"Nome: {self.nome}, cognome: {self.cognome}, codice fiscale: {self.codiceFiscale}, data di nascita "
+        return f"Nome: {self.nome}, cognome: {self.cognome}, codice fiscale: {self.codiceFiscale}"
     
         

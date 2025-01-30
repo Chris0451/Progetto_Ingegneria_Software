@@ -5,8 +5,6 @@ class Consegna:
         self.oraConsegna = oraConsegna
         self.statoConsegna = statoConsegna
         self.valoreContrassegno = valoreContrassegno
-    def getValoreContrassegno(self):
-            return self.valoreContrassegno
     def setDataConsegna(self, newDataConsegna):
         self.dataConsegna = newDataConsegna
     def setStatoConsegna(self, newStatoConsegna):

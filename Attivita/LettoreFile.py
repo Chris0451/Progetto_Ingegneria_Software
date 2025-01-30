@@ -5,14 +5,7 @@ from Utenti.Cliente import Cliente
 from Utenti.Posizione import Posizione
 
 class LettoreFile:
-    # def read_file(self):
-    #     file = open("listaPacchi.txt", "r")
-    #     contenuto = file.read()
-    #     print(contenuto)
-    #     return
-
-    
-    def read_file(self):
+    def read_consegne(self):
         pacchi = []
         try:
             with open("listaConsegne.txt", "r") as file:

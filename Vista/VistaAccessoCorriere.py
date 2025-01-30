@@ -20,6 +20,7 @@ class VistaAccessoCorriere(QWidget):
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)
         button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        button.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold;")
         button.clicked.connect(on_click)
         return button
 
