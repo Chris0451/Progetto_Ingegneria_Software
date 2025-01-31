@@ -10,6 +10,8 @@ class VistaConsegne(QWidget):
         super().__init__()
         self.resize(500, 400)
         self.windowTitle("Visualizzazione consegne assegnate")
+        
     def initUI(self):
         layout1 = QFormLayout()
+        self.setLayout(layout1)
         

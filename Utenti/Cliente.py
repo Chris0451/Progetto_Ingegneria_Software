@@ -1,6 +1,6 @@
 from Utenti.Utente import Utente
 class Cliente(Utente):
-    def __init__(self,  nome, cognome, codiceFiscale, telefono, email, codiceCliente, posizione):
+    def __init__(self,  nome, cognome, email, telefono, codiceFiscale, codiceCliente, posizione):
         super().__init__(nome, cognome, codiceFiscale, telefono, email)
         self.nome = nome
         self.cognome = cognome

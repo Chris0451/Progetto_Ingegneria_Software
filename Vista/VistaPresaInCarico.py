@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QLineEdit, QLabel
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 from Attivita.LettoreFile import LettoreFile
+from Vista.VistaConsegnaConfermata import VistaConsegnaConfermata
 
 class VistaPresaInCarico(QWidget) :
     def __init__(self):
@@ -35,7 +36,8 @@ class VistaPresaInCarico(QWidget) :
                 print(f"Codice confermato: {codice}")
                 pacco.consegna.setStatoConsegna("In transito")
                 print(pacco.consegna.statoConsegna)
-                
+                self.consegna_confermata = VistaConsegnaConfermata()
+                self.consegna_confermata.show()
             else:
                 print("Codice errato o Nessun codice inserito")
         
