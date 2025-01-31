@@ -1,1 +1,0 @@
-["1", 20.0, 30.0, "Elettronica", "Contanti", ["Cristian", "Di Cintio", "cristian@example.com", "CFCRSTNCNT", "12345", ["Via Roma", "10", "Milano", "MI", "20100"]], ["Enrico", "Corradini", "enrico@example.com", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]]]
