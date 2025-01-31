@@ -1,26 +1,26 @@
-
 from Attivita.Pacco import Pacco
-from Utenti.Utente import Utente
+from Attivita.Consegna import Consegna
 from Utenti.Cliente import Cliente
 from Utenti.Posizione import Posizione
 
 class LettoreFile:
+    def __init__(self):
+        pass
     def read_consegne(self):
         pacchi = []
         try:
-            with open("listaConsegne.txt", "r") as file:
+            with open("Dati/listaConsegne.txt", "r") as file:
                 for numero_riga, linea in enumerate(file, start=1):
                     # Rimuovi spazi e caratteri di nuova linea
                     linea = linea.strip()
                     if not linea:
                         print(f"Riga {numero_riga} vuota, ignorata.")
                         continue  # Salta le righe vuote
-
                     try:
                         # Converti la stringa in lista
                         dati = eval(linea)  # Usa eval solo se il formato è affidabile
-                        if len(dati) != 7:
-                            raise ValueError(f"Riga {numero_riga} non ha 7 elementi.")
+                        if len(dati) != 8:
+                            raise ValueError(f"Riga {numero_riga} non ha 8 elementi.")
 
                         codicePacco = int(dati[0])
                         peso = float(dati[1])
@@ -30,10 +30,10 @@ class LettoreFile:
 
                         # Parsing del mittente
                         mittente_info = dati[5]
-                        if len(mittente_info) != 7:
+                        if len(mittente_info) != 6:
                             raise ValueError(f"Riga {numero_riga}: Dati del mittente non validi.")
                         
-                        posizione_mittente_info = mittente_info[6]
+                        posizione_mittente_info = mittente_info[5]
                         if len(posizione_mittente_info) != 5:
                             raise ValueError(f"Riga {numero_riga}: Dati della posizione del mittente non validi.")
                         
@@ -44,20 +44,25 @@ class LettoreFile:
 
                         # Parsing del destinatario
                         destinatario_info = dati[6]
-                        if len(destinatario_info) != 7:
+                        if len(destinatario_info) != 6:
                             raise ValueError(f"Riga {numero_riga}: Dati del destinatario non validi.")
                         
-                        posizione_destinatario_info = destinatario_info[6]
+                        posizione_destinatario_info = destinatario_info[5]
                         if len(posizione_destinatario_info) != 5:
                             raise ValueError(f"Riga {numero_riga}: Dati della posizione del destinatario non validi.")
                         
                         posizione_destinatario = Posizione(*posizione_destinatario_info)
-                        destinatario = Cliente(destinatario_info[0], destinatario_info[1], destinatario_info[2],
-                                               destinatario_info[3], destinatario_info[4], destinatario_info[5],
+                        destinatario = Cliente(destinatario_info[0], destinatario_info[1], destinatario_info[2], 
+                                               destinatario_info[3], destinatario_info[4], destinatario_info[5], 
                                                posizione_destinatario)
-
+                        
+                        dati_consegna_info = dati[7]
+                        if len(dati_consegna_info) != 5:
+                            raise ValueError(f"Riga {numero_riga}: Dati della consegna non validi.")
+                        dati_consegna = Consegna(*dati_consegna_info)
+                        
                         # Crea un oggetto Pacco
-                        pacco = Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario)
+                        pacco = Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, dati_consegna, None)
                         pacchi.append(pacco)
                     except SyntaxError as e:
                         print(f"Errore di sintassi nella riga {numero_riga}: {e}")

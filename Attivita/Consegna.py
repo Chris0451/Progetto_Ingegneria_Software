@@ -16,6 +16,6 @@ class Consegna:
         print(f"Data Consegna: {self.dataConsegna}\n")
         print(f"Ora Consegna: {self.oraConsegna}\n")
         print(f"Stato Consegna: {self.statoConsegna}\n")
-        print(f"Valore Contrassegno: {self.valoreContrassegno}\n")  
+        print(f"Valore Contrassegno: {self.valoreContrassegno}\n") 
         
         

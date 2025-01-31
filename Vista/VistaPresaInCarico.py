@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QLineEdit, QLabel, QFormLayout
+import sys
+
+from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QLineEdit, QLabel, QFormLayout, QMainWindow
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 from Attivita.LettoreFile import LettoreFile
-
 
 class VistaPresaInCarico(QWidget) :
     def __init__(self):
@@ -26,9 +27,16 @@ class VistaPresaInCarico(QWidget) :
         self.conferma.clicked.connect(self.submit)
         
     def submit(self):
-        pacchi = 
+        lettore = LettoreFile()
+        pacchi = lettore.read_consegne()
         codice = self.inserimento_codice.text()
-        if codice != "":
-            print(f"Codice confermato: {codice}")
-        else: print("Nessun codice inserito")
+        for pacco in pacchi:
+            if codice == pacco.consegna.codiceConsegna:
+                print(f"Codice confermato: {codice}")
+                pacco.consegna.setStatoConsegna("In transito")
+                print(pacco.consegna.statoConsegna)
+                
+            else:
+                print("Codice errato o Nessun codice inserito")
+        
         

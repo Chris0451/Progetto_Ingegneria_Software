@@ -1,6 +1,9 @@
+import sys
+
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSizePolicy, QMainWindow
 
 from Vista.VistaPresaInCarico import VistaPresaInCarico
+from Vista.VistaConsegne import VistaConsegne
 
 class VistaAccessoCorriere(QWidget):
     
@@ -14,7 +17,7 @@ class VistaAccessoCorriere(QWidget):
         vlayout.addLayout(hlayout)
         vlayout.addWidget(self.get_generic_button("Deposita pacchi", self.go_deposito))
         self.setLayout(vlayout)
-        self.resize(400, 300)
+        self.setFixedSize(450,300)
         self.setWindowTitle("Profilo Corriere")
 
     def get_generic_button(self, titolo, on_click):
@@ -29,6 +32,8 @@ class VistaAccessoCorriere(QWidget):
         self.presa_in_carico.show()
 
     def go_listaConsegne(self):
+        # self.listaConsegne = VistaConsegne()
+        # self.VistaConsegne().show()
         pass
 
     def go_listaRitiri(self):

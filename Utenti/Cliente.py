@@ -1,11 +1,12 @@
-class Cliente():
-    def __init__(self,  nome, cognome, codiceFiscale, data_nascita, telefono, email, password, identificativo, codiceCliente, posizione):
+from Utenti.Utente import Utente
+class Cliente(Utente):
+    def __init__(self,  nome, cognome, codiceFiscale, telefono, email, codiceCliente, posizione):
+        super().__init__(nome, cognome, codiceFiscale, telefono, email)
         self.nome = nome
         self.cognome = cognome
         self.codiceFiscale = codiceFiscale
         self.telefono = telefono
         self.email = email
-        self.identificativo = identificativo
         self.codiceCliente = codiceCliente
         self.posizione = posizione
     def getInfoCliente(self):
