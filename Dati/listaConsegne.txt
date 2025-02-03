@@ -3,12 +3,12 @@
 ["Enrico", "Corradini", "enrico@example.com", "0987654321", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]],
  "C110", "27/01/2025", "9:30", "in deposito", 100]
 ***********
-["1", 20.0, 30.0, "Elettronica", "Contrassegno", 
+["2", 20.0, 30.0, "Elettronica", "Contrassegno", 
 ["Cristian", "Di Cintio", "cristian@example.com", "1234567890", "CFCRSTNCNT", "12345", ["Via Roma", "10", "Milano", "MI", "20100"]], 
 ["Enrico", "Corradini", "enrico@example.com", "0987654321", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]],
- "C110", "27/01/2025", "9:30", "in deposito", 100]
+ "C111", "27/01/2025", "9:30", "in deposito", 100]
 ***********
-["1", 20.0, 30.0, "Elettronica", "Contrassegni", 
+["3", 20.0, 30.0, "Elettronica", "Contrassegni", 
 ["Cristian", "Di Cintio", "cristian@example.com", "1234567890", "CFCRSTNCNT", "12345", ["Via Roma", "10", "Milano", "MI", "20100"]], 
 ["Enrico", "Corradini", "enrico@example.com", "0987654321", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]],
- "C110", "27/01/2025", "9:30", "in deposito", 100]
+ "C112", "27/01/2025", "9:30", "in deposito", 100]

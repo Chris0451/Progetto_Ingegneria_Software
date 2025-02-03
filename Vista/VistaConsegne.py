@@ -1,5 +1,3 @@
-import sys
-
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QLineEdit, QLabel, QFormLayout
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
