@@ -2,11 +2,13 @@ from Attivita.LettoreFile import LettoreFile
 
 class GestoreConsegna():
     def __init__(self):
-        lettoreFile = LettoreFile()
         self.codiceConsegne = ""
-        self.listaConsegne = lettoreFile.read_consegne()
+        self.listaConsegne = LettoreFile().read_consegne()
+        self.listaColliConsegne = []
         self.listaConsegnePositive = []
         self.listaConsegneNegative = []
+        self.listaColliPositivi = []
+        self.listaColliNegativi = []
         self.incassoContrassegno = 0.0
         
     def confermaConsegna(self, consegna_confermata):
@@ -18,6 +20,10 @@ class GestoreConsegna():
     
     def modificaStatoConsegna(self, consegna, nuovo_stato):
         self.getConsegna(consegna).datiConsegna.setStatoConsegna(nuovo_stato)
+
+    def modificaIncassoContrassegno(self, consegna):
+        if self.getConsegna(consegna).datiConsegna.metodoPagamento == "Contrassegno":
+            self.incassoContrassegno += self.getConsegna(consegna).datiConsegna.valoreContrassegno
 
     def ricercaConsegna(self, consegna):
         if consegna in self.listaConsegne:

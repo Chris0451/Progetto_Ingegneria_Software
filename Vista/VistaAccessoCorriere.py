@@ -1,5 +1,3 @@
-import sys
-
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSizePolicy
 
 from Vista.VistaPresaInCarico import VistaPresaInCarico
@@ -32,10 +30,8 @@ class VistaAccessoCorriere(QWidget):
         self.presa_in_carico.show()
 
     def go_listaConsegne(self):
-        # self.listaConsegne = VistaConsegne()
-        # self.VistaConsegne().show()
-        pass
-
+        self.listaConsegne = VistaConsegne()
+        self.VistaConsegne().show()
     def go_listaRitiri(self):
         pass
 

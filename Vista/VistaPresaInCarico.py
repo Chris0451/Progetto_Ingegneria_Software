@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QLabel, QFormLayout
 from Vista.VistaConsegnaAggiunta import VistaConsegnaAggiunta
 from Vista.VistaConsegnaNonAggiunta import VistaConsegnaNonAggiunta
+#from Vista.VistaConsegnaPresente import VistaConsegnaPresente
 from Gestione.GestoreConsegna import GestoreConsegna
 
 class VistaPresaInCarico(QWidget) :
@@ -33,11 +34,15 @@ class VistaPresaInCarico(QWidget) :
         codice = self.inserimento_codice.text()
         if gestoreConsegna.ricercaConsegnaByCodice(codice):
             consegna_confermata = gestoreConsegna.getConsegnaByCodice(codice)
-            gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
-            print(f"Codice confermato: {codice}")
-            print(f"Nuovo stato consegna: {consegna_confermata.datiConsegna.statoConsegna}")
-            self.consegna_aggiunta = VistaConsegnaAggiunta()
-            self.consegna_aggiunta.show()
+            if(consegna_confermata.datiConsegna.statoConsegna != "In transito"):
+                gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
+                # print(f"Codice confermato: {codice}")
+                # print(f"Nuovo stato consegna: {consegna_confermata.datiConsegna.statoConsegna}")
+                self.consegna_aggiunta = VistaConsegnaAggiunta()
+                self.consegna_aggiunta.show()
+            # else:
+            #     self.consegna_presente = VistaConsegnaPresente()
+            #     self.consegna_presente.show()
         else:
             self.consegna_nonAggiunta = VistaConsegnaNonAggiunta()
             self.consegna_nonAggiunta.show()
