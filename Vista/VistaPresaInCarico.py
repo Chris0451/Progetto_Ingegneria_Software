@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QLabel, QFormLayout
-from Attivita.LettoreFile import LettoreFile
 from Vista.VistaConsegnaAggiunta import VistaConsegnaAggiunta
 from Vista.VistaConsegnaNonAggiunta import VistaConsegnaNonAggiunta
-#from Gestore.GestoreConsegna import GestoreConsegna
+from Gestione.GestoreConsegna import GestoreConsegna
 
 class VistaPresaInCarico(QWidget) :
     def __init__(self):
@@ -30,19 +29,16 @@ class VistaPresaInCarico(QWidget) :
         self.indietro.clicked.connect(self.submit_chiusura)
         
     def submit_lettura(self):
-        lettore = LettoreFile()
-        pacchi = lettore.read_consegne()
+        gestoreConsegna = GestoreConsegna()
         codice = self.inserimento_codice.text()
-        trovato = False
-        for pacco in pacchi:
-            if codice == pacco.consegna.codiceConsegna:
-                print(f"Codice confermato: {codice}")
-                pacco.consegna.setStatoConsegna("In transito")
-                print("Nuovo stato: "+pacco.consegna.statoConsegna)
-                self.consegna_aggiunta = VistaConsegnaAggiunta()
-                self.consegna_aggiunta.show()
-                trovato = True
-        if not trovato:
+        if gestoreConsegna.ricercaConsegnaByCodice(codice):
+            consegna_confermata = gestoreConsegna.getConsegnaByCodice(codice)
+            gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
+            print(f"Codice confermato: {codice}")
+            print(f"Nuovo stato consegna: {consegna_confermata.datiConsegna.statoConsegna}")
+            self.consegna_aggiunta = VistaConsegnaAggiunta()
+            self.consegna_aggiunta.show()
+        else:
             self.consegna_nonAggiunta = VistaConsegnaNonAggiunta()
             self.consegna_nonAggiunta.show()
         self.inserimento_codice.setText("")

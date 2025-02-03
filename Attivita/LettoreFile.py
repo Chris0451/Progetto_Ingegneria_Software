@@ -33,7 +33,7 @@ class LettoreFile:
         destinatario = self.parse_cliente(destinatario_data)
         consegna = self.parse_consegna(consegna_data)
 
-        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna, ritiro = None)
+        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna, None)
     def read_consegne(self):
         pacchi = []
         with open("Dati/listaConsegne.txt", "r") as file:

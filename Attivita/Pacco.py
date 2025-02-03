@@ -1,5 +1,5 @@
 class Pacco:
-    def __init__(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente, consegna, ritiro):
+    def __init__(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente, datiConsegna, datiRitiro):
         self.codicePacco = codicePacco
         self.peso = peso
         self.volume = volume
@@ -7,8 +7,8 @@ class Pacco:
         self.metodoPagamento = metodoPagamento
         self.mittente = mittente
         self.destinatario = destinatario
-        self.consegna = consegna
-        self.ritiro = ritiro
+        self.datiConsegna = datiConsegna
+        self.datiRitiro = datiRitiro
     def getInfoPacco(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente, consegna, ritiro):
         print(f"Codice Pacco: {self.codicePacco}\n")
         print(f"Peso: {self.peso}\n")
