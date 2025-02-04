@@ -12,7 +12,7 @@ class VistaPresaInCarico(QWidget) :
         self.titolo = QLabel("Inserisci codice consegna: ")
         self.inserimento_codice = QLineEdit(self)
         self.conferma = QPushButton("Conferma", self)
-        self.indietro = QPushButton("Indietro", self)
+        self.indietro = QPushButton("Indietro", self)  
         self.initUI()
         
         

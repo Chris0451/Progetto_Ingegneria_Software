@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
+from Vista.VistaConsegneSelezionata import VistaConsegnaSelezionata
 from Gestione.GestoreConsegna import GestoreConsegna
 
 class VistaConsegneStandard(QWidget):
@@ -29,8 +30,8 @@ class VistaConsegneStandard(QWidget):
         return button
      
     def opzioni_consegna(self, gestoreConsegna, consegna):
-        print("Bottone selezionato")
-        pass
+        self.consegna_selezionata = VistaConsegnaSelezionata(gestoreConsegna, consegna)
+        self.consegna_selezionata.show()
     
     def submit_chiusura(self):
         self.close()
