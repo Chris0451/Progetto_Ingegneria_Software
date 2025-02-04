@@ -1,1 +1,1 @@
-__all__ = ["Pacco"]
+__all__ = ["Pacco", "Collo", "Consegna", "LettoreFile", "Ritiro"]
