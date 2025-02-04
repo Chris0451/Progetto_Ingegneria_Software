@@ -3,8 +3,8 @@ from Attivita.LettoreFile import LettoreFile
 class GestoreConsegna():
     def __init__(self):
         self.codiceConsegne = ""
-        self.listaConsegne = LettoreFile().read_consegne()
-        self.listaColliConsegne = []
+        self.listaConsegne = LettoreFile().leggi_consegne()
+        self.listaColliConsegne = LettoreFile().leggi_lista_colli_consegne()
         self.listaConsegnePositive = []
         self.listaConsegneNegative = []
         self.listaColliPositivi = []

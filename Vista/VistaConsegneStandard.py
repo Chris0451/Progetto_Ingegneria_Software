@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
-from Vista.VistaConsegneSelezionata import VistaConsegnaSelezionata
+from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QVBoxLayout
+from Vista.VistaConsegnaSelezionata import VistaConsegnaSelezionata
 from Gestione.GestoreConsegna import GestoreConsegna
 
 class VistaConsegneStandard(QWidget):

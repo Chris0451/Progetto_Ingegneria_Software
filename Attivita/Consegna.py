@@ -11,7 +11,7 @@ class Consegna:
         self.statoConsegna = newStatoConsegna
     def setOraConsegna(self, newOraConsegna):
         self.oraConsegna = newOraConsegna
-    def getInfoConsegna(self, codiceConsegna, dataConsegna, oraConsegna, statoConsegna, valoreContrassegno):
+    def getInfoConsegna(self):
         print(f"Codice Consegna: {self.codiceConsegna}\n")
         print(f"Data Consegna: {self.dataConsegna}\n")
         print(f"Ora Consegna: {self.oraConsegna}\n")

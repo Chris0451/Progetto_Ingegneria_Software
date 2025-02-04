@@ -8,7 +8,7 @@ class Collo:
         self.aziendaDestinatario = aziendaDestinatario
         self.ritiro = ritiro 
         self.consegna = consegna
-    def getInfoCollo(self, codiceCollo, naturaCollo, aziendaMittente, aziendaDestinatario):
+    def getInfoCollo(self):
         print(f"Codice Collo: {self.codiceCollo}\n")
         print(f"Natura Collo: {self.naturaCollo}\n")
         print(f"Azienda Mittente: {self.aziendaMittente}\n")

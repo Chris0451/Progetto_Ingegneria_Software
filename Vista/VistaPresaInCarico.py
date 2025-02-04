@@ -5,8 +5,9 @@ from Vista.VistaConsegnaNonAggiunta import VistaConsegnaNonAggiunta
 from Gestione.GestoreConsegna import GestoreConsegna
 
 class VistaPresaInCarico(QWidget) :
-    def __init__(self):
+    def __init__(self, gestoreConsegna):
         super().__init__()
+        self.gestoreConsegna = gestoreConsegna
         self.setFixedSize(500,150)
         self.setWindowTitle("Conferma consegna")
         self.titolo = QLabel("Inserisci codice consegna: ")
@@ -30,12 +31,11 @@ class VistaPresaInCarico(QWidget) :
         self.indietro.clicked.connect(self.submit_chiusura)
         
     def submit_lettura(self):
-        gestoreConsegna = GestoreConsegna()
         codice = self.inserimento_codice.text()
-        if gestoreConsegna.ricercaConsegnaByCodice(codice):
-            consegna_confermata = gestoreConsegna.getConsegnaByCodice(codice)
+        if self.gestoreConsegna.ricercaConsegnaByCodice(codice):
+            consegna_confermata = self.gestoreConsegna.getConsegnaByCodice(codice)
             if(consegna_confermata.datiConsegna.statoConsegna != "In transito"):
-                gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
+                self.gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
                 self.consegna_aggiunta = VistaConsegnaAggiunta()
                 self.consegna_aggiunta.show()
             # else:

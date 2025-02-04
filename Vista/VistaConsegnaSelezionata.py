@@ -6,4 +6,4 @@ class VistaConsegnaSelezionata(QWidget):
         super().__init__()
         self.gestoreConsegna = gestoreConsegna
         self.consegna_selezionata = consegna_selezionata
-        
+                
