@@ -27,11 +27,11 @@ class VistaAccessoCorriere(QWidget):
         return button
     
     def go_presaInCarico(self, gestoreConsegna):
-        self.presa_in_carico = VistaPresaInCarico()
+        self.presa_in_carico = VistaPresaInCarico(gestoreConsegna)
         self.presa_in_carico.show()
     
     def go_listaConsegne(self, gestoreConsegna):
-        self.listaConsegne = VistaConsegne()
+        self.listaConsegne = VistaConsegne(gestoreConsegna)
         self.listaConsegne.show()
         pass
     

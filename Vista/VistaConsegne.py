@@ -2,8 +2,9 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBo
 from Vista.VistaConsegneStandard import VistaConsegneStandard
 
 class VistaConsegne(QWidget):
-    def __init__(self):
+    def __init__(self, gestoreConsegne):
         super().__init__()
+        self.gestoreConsegne = gestoreConsegne
         self.setFixedSize(600, 250)
         self.setWindowTitle("Visualizzazione consegne assegnate")
         self.initUI()
