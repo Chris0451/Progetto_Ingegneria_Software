@@ -46,7 +46,7 @@ class LettoreFile:
         destinatario = self.parse_cliente(destinatario_data)
         consegna = self.parse_consegna(consegna_data)
 
-        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna=consegna, ritiro=None)
+        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna, None)
     
     def parse_pacco_ritiro(self, data):
         """Converte una lista di dati in un oggetto Pacco per un ritiro."""
