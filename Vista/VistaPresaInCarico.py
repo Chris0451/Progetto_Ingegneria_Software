@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QLabel, QFormLayout
 from Vista.VistaConsegnaAggiunta import VistaConsegnaAggiunta
 from Vista.VistaConsegnaNonAggiunta import VistaConsegnaNonAggiunta
 #from Vista.VistaConsegnaPresente import VistaConsegnaPresente
-from Gestione.GestoreConsegna import GestoreConsegna
+
 
 class VistaPresaInCarico(QWidget) :
     def __init__(self, gestoreConsegna):
