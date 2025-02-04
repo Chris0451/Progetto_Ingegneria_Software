@@ -15,13 +15,13 @@ class GestoreConsegna():
         self.listaConsegnePositive.append(consegna_confermata)
     
     def rimandaConsegna(self, consegna_annullata, nuova_data):
-        consegna_annullata.consegna.setDataConsegna(nuova_data)
+        consegna_annullata.datiConsegna.setDataConsegna(nuova_data)
         self.listaConsegneNegative.append(consegna_annullata)
     
     def modificaStatoConsegna(self, consegna, nuovo_stato):
         self.getConsegna(consegna).datiConsegna.setStatoConsegna(nuovo_stato)
 
-    def modificaIncassoContrassegno(self, consegna):
+    def aggiornaIncassoContrassegno(self, consegna):
         if self.getConsegna(consegna).datiConsegna.metodoPagamento == "Contrassegno":
             self.incassoContrassegno += self.getConsegna(consegna).datiConsegna.valoreContrassegno
 

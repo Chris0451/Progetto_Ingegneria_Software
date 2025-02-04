@@ -30,8 +30,9 @@ class VistaAccessoCorriere(QWidget):
         self.presa_in_carico.show()
 
     def go_listaConsegne(self):
-        self.listaConsegne = VistaConsegne()
-        self.VistaConsegne().show()
+        self.vistaConsegne = VistaConsegne()
+        self.vistaConsegne.show()
+        
     def go_listaRitiri(self):
         pass
 

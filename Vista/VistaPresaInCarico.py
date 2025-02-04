@@ -36,8 +36,6 @@ class VistaPresaInCarico(QWidget) :
             consegna_confermata = gestoreConsegna.getConsegnaByCodice(codice)
             if(consegna_confermata.datiConsegna.statoConsegna != "In transito"):
                 gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
-                # print(f"Codice confermato: {codice}")
-                # print(f"Nuovo stato consegna: {consegna_confermata.datiConsegna.statoConsegna}")
                 self.consegna_aggiunta = VistaConsegnaAggiunta()
                 self.consegna_aggiunta.show()
             # else:
