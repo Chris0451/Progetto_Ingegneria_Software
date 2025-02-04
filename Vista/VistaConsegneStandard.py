@@ -25,7 +25,7 @@ class VistaConsegneStandard(QWidget):
         button = QPushButton(titolo)
         button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         button.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold;")
-        button.clicked.connect(on_click)
+        button.clicked.connect(lambda : on_click(argument1, argument2))
         return button
      
     def opzioni_consegna(self, gestoreConsegna, consegna):
