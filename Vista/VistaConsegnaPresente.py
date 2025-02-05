@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QFormLayout
 
-class VistaConsegnaAggiunta(QWidget):
+class VistaConsegnaPresente(QWidget):
     def __init__(self):
         super().__init__()
         self.resize(400,100)
@@ -15,9 +15,8 @@ class VistaConsegnaAggiunta(QWidget):
         layout.addRow(self.label_conferma)
         layout.addRow(self.click_conferma)
         self.setLayout(layout)
-        self.label_conferma.setStyleSheet("font-size: 20px; font-family: Arial;")
+        self.label_conferma.setStyleSheet("font-size: 20px; font-family: Arial; font-weight: bold;")
         self.click_conferma.setStyleSheet("font-size: 20px; font-family: Arial; font-weight: bold;")
         
     def submit(self):
         self.close()
-        
