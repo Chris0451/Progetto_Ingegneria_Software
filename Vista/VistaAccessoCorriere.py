@@ -44,9 +44,11 @@ class VistaAccessoCorriere(QWidget):
         pass
     
     def go_listaRitiri(self, gestoreRitiro):
-        # self.visualizza_ritiri = VistaVisualizzaListaRitiri()
+        # self.visualizza_ritiri = VistaVisualizzaListaRitiri(gestoreRitiro)
         # self.visualizza_ritiri.show()
         pass
     
-    def go_deposito(self,gestoreConsegna, gestoreRitiro):
+    def go_deposito(self, gestoreConsegna, gestoreRitiro):
+        # self.deposito_pacchi = VistaDepositoPacchi(gestoreConsegna, gestoreRitiro)
+        # self.deposito_pacchi.show()
         pass

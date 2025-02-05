@@ -158,27 +158,6 @@ class LettoreFile:
                 
         return colli
     
-    # def crea_azienda(self, dati):
-    #     responsabile_raw, codice_fornitore, nome_azienda, orario_apertura, orario_chiusura, giorni_apertura = dati
-    #     responsabile = self.crea_cliente(responsabile_raw)
-    #     return Azienda(responsabile, responsabile.posizione, nome_azienda, orario_apertura, orario_chiusura, giorni_apertura)
-    
-    # def crea_cliente(self, dati):
-    #     nome, cognome, codice_fiscale, telefono, email, codice_cliente, posizione_raw = dati
-    #     posizione = self.crea_posizione(posizione_raw)
-    #     return Cliente(nome, cognome, email, telefono, codice_fiscale, codice_cliente, posizione)
-    
-    # def crea_posizione(self, dati):
-    #     via, civico, comune, provincia, CAP = dati
-    #     return Posizione(via, civico, comune, provincia, CAP)
-    
-    # def crea_ritiro(self, dati):
-    #     codice_ritiro, data_ritiro, ora_ritiro, stato_ritiro = dati
-    #     return Ritiro(codice_ritiro, data_ritiro, ora_ritiro, stato_ritiro)
-    
- 
-
-
     def leggi_lista_colli_consegne(self):
         def crea_posizione(dati):
             via, civico, comune, provincia, CAP = dati

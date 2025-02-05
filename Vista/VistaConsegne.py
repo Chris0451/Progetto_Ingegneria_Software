@@ -1,5 +1,11 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
+
 from Vista.VistaConsegneStandard import VistaConsegneStandard
+from Vista.VistaConsegnePositive import VistaConsegnePositive
+# from Vista.VistaConsegneRimandate import VistaConsegneRimandate
+# from Vista.VistaColliConsegna import VistaColliConsegna
+# from Vista.VistaColliPositivi import VistaColliPositivi
+# from Vista.VistaColliRimandati import VistaColliRimandati
 
 class VistaConsegne(QWidget):
     def __init__(self, gestoreConsegne):
@@ -44,20 +50,29 @@ class VistaConsegne(QWidget):
         self.consegne_standard = VistaConsegneStandard(gestoreConsegne)
         self.consegne_standard.show()
         
-    def go_colliConsegna(self):
+    def go_colliConsegna(self, gestoreConsegna):
+    #     self.colli_consegne = VistaColliConsegna(gestoreConsegna)
+    #     self.colli_consegne.show()
         pass
+        
+    def go_consegnePositive(self, gestoreConsegna):
+        self.consegne_positive = VistaConsegnePositive(gestoreConsegna)
+        self.consegne_positive.show()
     
-    def go_consegnePositive(self):
+    def go_colliPositivi(self, gestoreConsegna):
         pass
+    #     self.colli_positivi = VistaColliPositivi(gestoreConsegna)
+    #     self.colli_positivi.show()
     
-    def go_colliPositivi(self):
+    def go_consegneRimandate(self, gestoreConsegna):
         pass
+    #     self.consegne_rimandate = VistaConsegneRimandate(gestoreConsegna)
+    #     self.consegne_rimandate.show()
     
-    def go_consegneRimandate(self):
+    def go_colliRimandati(self, gestoreConsegna):
         pass
-    
-    def go_colliRimandati(self):
-        pass
+    #     self.colli_rimandati = VistaColliRimandati(gestoreConsegna)
+    #     self.colli_rimandati.show()
     
     def go_back(self):
         self.close()

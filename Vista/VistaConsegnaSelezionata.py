@@ -1,4 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QVBoxLayout
+
+from Vista.VistaEffettuaConsegna import VistaEffettuaConsegna
+from Vista.VistaRimandaConsegna import VistaRimandaConsegna
+from Vista.VistaModificaOrarioConsegna import VistaModificaOrarioConsegna
+
 
 class VistaConsegnaSelezionata(QWidget):
     def __init__(self, gestoreConsegna, consegna_selezionata, contatore):
@@ -7,7 +12,7 @@ class VistaConsegnaSelezionata(QWidget):
         self.consegna_selezionata = consegna_selezionata
         self.contatore = contatore
         self.setWindowTitle(f"Opzioni Consegna {self.contatore}")
-        self.setFixedSize(400,250)
+        self.setFixedSize(300,350)
         vlayout = QVBoxLayout()
         vlayout.addWidget(self.get_generic_button(f"Consegna pacco {self.contatore}", self.effettua_consegna, gestoreConsegna, consegna_selezionata))
         vlayout.addWidget(self.get_generic_button(f"Rimanda consegna {self.contatore}", self.rimanda_consegna, gestoreConsegna, consegna_selezionata))
@@ -22,10 +27,13 @@ class VistaConsegnaSelezionata(QWidget):
         return button
     
     def effettua_consegna(self, gestoreConsegna, consegna_selezionata):
-        pass
+        self.effettuaConsegna = VistaEffettuaConsegna(gestoreConsegna, consegna_selezionata)
+        self.effettuaConsegna.show()
     
     def rimanda_consegna(self, gestoreConsegna, consegna_selezionata):
-        pass
+        self.rimanda_consegna = VistaRimandaConsegna(gestoreConsegna, consegna_selezionata)
+        self.rimanda_consegna.show()
     
     def modifica_orario_consegna(self, gestoreConsegna, consegna_selezionata):
-        pass
+        self.modifica_orario = VistaModificaOrarioConsegna(gestoreConsegna, consegna_selezionata)
+        self.rimanda_consegna.show()

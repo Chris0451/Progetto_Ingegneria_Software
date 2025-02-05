@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QLabel, QFormLayout
 from Vista.VistaConsegnaAggiunta import VistaConsegnaAggiunta
 from Vista.VistaConsegnaNonAggiunta import VistaConsegnaNonAggiunta
-#from Vista.VistaConsegnaPresente import VistaConsegnaPresente
+from Vista.VistaConsegnaPresente import VistaConsegnaPresente
 
 
 class VistaPresaInCarico(QWidget) :
@@ -38,9 +38,9 @@ class VistaPresaInCarico(QWidget) :
                 self.gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
                 self.consegna_aggiunta = VistaConsegnaAggiunta()
                 self.consegna_aggiunta.show()
-            # else:
-            #     self.consegna_presente = VistaConsegnaPresente()
-            #     self.consegna_presente.show()
+            else:
+                self.consegna_presente = VistaConsegnaPresente()
+                self.consegna_presente.show()
         else:
             self.consegna_nonAggiunta = VistaConsegnaNonAggiunta()
             self.consegna_nonAggiunta.show()
