@@ -1,1 +1,1 @@
-__all__ = ["VistaAccessoCorriere", "VistaConsegnaAggiunta", "VistaConsegnaNonAggiunta", "VistaConsegnaPresente", "VistaConsegne", "VistaPresaInCarico", "VistaRitiri", "VistaRitiriStandard", "VistaColliRitirati"]
+__all__ = ["VistaAccessoCorriere", "VistaConsegnaAggiunta", "VistaConsegnaNonAggiunta", "VistaConsegnaPresente", "VistaConsegne", "VistaPresaInCarico"]

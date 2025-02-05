@@ -9,13 +9,13 @@ class Pacco:
         self.destinatario = destinatario
         self.datiConsegna = datiConsegna
         self.datiRitiro = datiRitiro
-    def getInfoPacco(self, codicePacco, peso, volume, tipo, metodoPagamento, destinatario, mittente, datiConsegna, datiRitiro):
+    def getInfoPacco(self):
         print(f"Codice Pacco: {self.codicePacco}\n")
         print(f"Peso: {self.peso}\n")
         print(f"Volume: {self.volume}\n")  
         print(f"Tipo: {self.tipo}\n")
         print(f"Metodo Pagamento: {self.metodoPagamento}\n")
-        print("Consegna: " + self.datiConsegna.getInfoConsegna() + "\n")
+        print("Consegna: " + self.datiConsegnaonsegna.getInfoConsegna() + "\n")
         print("Destinatario: " + self.destinatario.getInfoDestinatario() + "\n")
         print("Ritiro: " + self.datiRitiro.getInfoRitiro() + "\n")
         print("Mittente: " + self.mittente.getInfoMittente() + "\n")

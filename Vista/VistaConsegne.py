@@ -1,9 +1,16 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
+
 from Vista.VistaConsegneStandard import VistaConsegneStandard
+from Vista.VistaConsegnePositive import VistaConsegnePositive
+# from Vista.VistaConsegneRimandate import VistaConsegneRimandate
+# from Vista.VistaColliConsegna import VistaColliConsegna
+# from Vista.VistaColliPositivi import VistaColliPositivi
+# from Vista.VistaColliRimandati import VistaColliRimandati
 
 class VistaConsegne(QWidget):
-    def __init__(self):
+    def __init__(self, gestoreConsegne):
         super().__init__()
+        self.gestoreConsegne = gestoreConsegne
         self.setFixedSize(600, 250)
         self.setWindowTitle("Visualizzazione consegne assegnate")
         self.initUI()
@@ -13,43 +20,59 @@ class VistaConsegne(QWidget):
         hlayout1 = QHBoxLayout()
         hlayout2 = QHBoxLayout()
         qlayout = QFormLayout()
-        hlayout1.addWidget(self.get_generic_button("Lista Consegne\n Standard", self.go_consegneStandard))
-        hlayout1.addWidget(self.get_generic_button("Consegne Positive", self.go_colliConsegna))
-        hlayout1.addWidget(self.get_generic_button("Consegne Rimandate", self.go_consegnePositive))
-        hlayout2.addWidget(self.get_generic_button("Lista Colli\n da consegnare", self.go_colliPositivi))
-        hlayout2.addWidget(self.get_generic_button("Colli positivi", self.go_consegneRimandate))
-        hlayout2.addWidget(self.get_generic_button("Colli Rimandati", self.go_colliRimandati))
-        qlayout.addWidget(self.get_generic_button("Indietro", self.go_back))
+        hlayout1.addWidget(self.get_generic_button("Lista Consegne\n Standard", self.go_consegneStandard, self.gestoreConsegne))
+        hlayout1.addWidget(self.get_generic_button("Consegne Positive", self.go_consegnePositive, self.gestoreConsegne))
+        hlayout1.addWidget(self.get_generic_button("Consegne Rimandate", self.go_consegneRimandate, self.gestoreConsegne))
+        hlayout2.addWidget(self.get_generic_button("Lista Colli\n da consegnare", self.go_colliConsegna, self.gestoreConsegne))
+        hlayout2.addWidget(self.get_generic_button("Colli positivi", self.go_colliPositivi, self.gestoreConsegne))
+        hlayout2.addWidget(self.get_generic_button("Colli Rimandati", self.go_colliRimandati, self.gestoreConsegne))
+        qlayout.addWidget(self.get_generic_button_2("Indietro", self.go_back))
         vlayout.addLayout(hlayout1)
         vlayout.addLayout(hlayout2)
         vlayout.addLayout(qlayout)
         self.setLayout(vlayout)
         
-    def get_generic_button(self, titolo, on_click):
+    def get_generic_button(self, titolo, on_click, argument):
         button = QPushButton(titolo)
         button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         button.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold;")
-        button.clicked.connect(on_click)
+        button.clicked.connect(lambda : on_click(argument))
         return button
     
-    def go_consegneStandard(self):
-        self.consegne_standard = VistaConsegneStandard()
+    def get_generic_button_2(self, titolo, on_click):
+        button = QPushButton(titolo)
+        button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        button.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold;")
+        button.clicked.connect(lambda : on_click())
+        return button
+    
+    def go_consegneStandard(self, gestoreConsegne):
+        self.consegne_standard = VistaConsegneStandard(gestoreConsegne)
         self.consegne_standard.show()
         
-    def go_colliConsegna(self):
+    def go_colliConsegna(self, gestoreConsegna):
+    #     self.colli_consegne = VistaColliConsegna(gestoreConsegna)
+    #     self.colli_consegne.show()
         pass
+        
+    def go_consegnePositive(self, gestoreConsegna):
+        self.consegne_positive = VistaConsegnePositive(gestoreConsegna)
+        self.consegne_positive.show()
     
-    def go_consegnePositive(self):
+    def go_colliPositivi(self, gestoreConsegna):
         pass
+    #     self.colli_positivi = VistaColliPositivi(gestoreConsegna)
+    #     self.colli_positivi.show()
     
-    def go_colliPositivi(self):
+    def go_consegneRimandate(self, gestoreConsegna):
         pass
+    #     self.consegne_rimandate = VistaConsegneRimandate(gestoreConsegna)
+    #     self.consegne_rimandate.show()
     
-    def go_consegneRimandate(self):
+    def go_colliRimandati(self, gestoreConsegna):
         pass
-    
-    def go_colliRimandati(self):
-        pass
+    #     self.colli_rimandati = VistaColliRimandati(gestoreConsegna)
+    #     self.colli_rimandati.show()
     
     def go_back(self):
         self.close()
