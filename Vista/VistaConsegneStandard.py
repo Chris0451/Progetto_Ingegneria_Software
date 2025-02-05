@@ -10,7 +10,7 @@ class VistaConsegneStandard(QWidget):
         self.setWindowTitle("Lista consegne standard")
         i = 1
         for consegna in gestoreConsegna.listaConsegne:
-            vlayout.addWidget(self.get_generic_button(f"Consegna {i}\n\n Destinatario: {consegna.destinatario.nome} {consegna.destinatario.cognome}\n Indirizzo: {consegna.destinatario.posizione.via} {consegna.destinatario.posizione.civico}", self.opzioni_consegna, gestoreConsegna, consegna, i))
+            vlayout.addWidget(self.get_generic_button(f"Consegna {i}\n\n Destinatario: {consegna.destinatario.nome} {consegna.destinatario.cognome}\n Indirizzo: {consegna.destinatario.posizione.via} {consegna.destinatario.posizione.civico}\n Stato consegna: {consegna.datiConsegna.statoConsegna}", self.opzioni_consegna, gestoreConsegna, consegna, i))
             i += 1
         self.indietro = QPushButton("Indietro")
         vlayout.addWidget(self.indietro)
