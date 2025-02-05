@@ -46,7 +46,7 @@ class LettoreFile:
         destinatario = self.parse_cliente(destinatario_data)
         consegna = self.parse_consegna(consegna_data)
 
-        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna=consegna, ritiro=None)
+        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna, None)
     
     def parse_pacco_ritiro(self, data):
         """Converte una lista di dati in un oggetto Pacco per un ritiro."""
@@ -63,9 +63,9 @@ class LettoreFile:
         destinatario = self.parse_cliente(destinatario_data)
         ritiro = self.parse_ritiro(ritiro_data)
         
-        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, consegna=None, ritiro=ritiro)
+        return Pacco(codicePacco, peso, volume, tipo, metodoPagamento, mittente, destinatario, None, ritiro)
 
-    def read_consegne(self):
+    def leggi_consegne(self):
         """Legge il file listaConsegne.txt e restituisce una lista di oggetti Pacco per le consegne."""
         pacchi = []
         try:
@@ -86,7 +86,7 @@ class LettoreFile:
         
         return pacchi
 
-    def read_ritiri(self):
+    def leggi_ritiri(self):
         """Legge il file listaRitiri.txt e restituisce una lista di oggetti Pacco per i ritiri."""
         pacchi = []
         try:
@@ -150,7 +150,7 @@ class LettoreFile:
                 azienda_destinatario = self.crea_azienda(azienda_destinatario_raw)
                 ritiro = self.crea_ritiro(ritiro_raw)
                 
-                collo = Collo(codice_collo, natura_collo, peso, volume, azienda_mittente, azienda_destinatario, ritiro = ritiro, consegna = None)
+                collo = Collo(codice_collo, natura_collo, peso, volume, azienda_mittente, azienda_destinatario, ritiro, None)
                 colli.append(collo)
             except Exception as e:
                 print(f"Errore nel parsing del collo: {e}")

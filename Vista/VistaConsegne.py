@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
 from Vista.VistaConsegneStandard import VistaConsegneStandard
 
-
 class VistaConsegne(QWidget):
     def __init__(self):
         super().__init__()
