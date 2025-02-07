@@ -5,18 +5,18 @@ from Vista.VistaRimandaConsegna import VistaRimandaConsegna
 from Vista.VistaModificaOrarioConsegna import VistaModificaOrarioConsegna
 
 
-class VistaConsegnaSelezionata(QWidget):
-    def __init__(self, gestoreConsegna, consegna_selezionata, contatore):
+class VistaColloSelezionato(QWidget):
+    def __init__(self, gestoreConsegna, collo_selezionato, contatore):
         super().__init__()
         self.gestoreConsegna = gestoreConsegna
-        self.consegna_selezionata = consegna_selezionata
+        self.collo_selezionato = collo_selezionato
         self.contatore = contatore
         self.setWindowTitle(f"Opzioni Consegna {self.contatore}")
         self.setFixedSize(300,350)
         vlayout = QVBoxLayout()
-        vlayout.addWidget(self.get_generic_button(f"Consegna pacco {self.contatore}", self.effettua_consegna, gestoreConsegna, consegna_selezionata))
-        vlayout.addWidget(self.get_generic_button(f"Rimanda consegna {self.contatore}", self.rimanda_consegna, gestoreConsegna, consegna_selezionata))
-        vlayout.addWidget(self.get_generic_button(f"Modifica orario consegna {self.contatore}", self.modifica_orario_consegna, gestoreConsegna, consegna_selezionata))
+        vlayout.addWidget(self.get_generic_button(f"Consegna collo {self.contatore}", self.effettua_consegna, gestoreConsegna, collo_selezionato))
+        vlayout.addWidget(self.get_generic_button(f"Rimanda consegna del collo {self.contatore}", self.rimanda_consegna, gestoreConsegna, collo_selezionato))
+        vlayout.addWidget(self.get_generic_button(f"Modifica orario consegna del collo {self.contatore}", self.modifica_orario_consegna, gestoreConsegna, collo_selezionato))
         self.setLayout(vlayout)
         
     def get_generic_button(self, titolo, on_click, argument1, argument2):

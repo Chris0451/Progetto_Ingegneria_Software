@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBo
 from Vista.VistaConsegneStandard import VistaConsegneStandard
 from Vista.VistaConsegnePositive import VistaConsegnePositive
 # from Vista.VistaConsegneRimandate import VistaConsegneRimandate
-# from Vista.VistaColliConsegna import VistaColliConsegna
+from Vista.VistaColliConsegna import VistaColliConsegna
 # from Vista.VistaColliPositivi import VistaColliPositivi
 # from Vista.VistaColliRimandati import VistaColliRimandati
 
@@ -51,8 +51,8 @@ class VistaConsegne(QWidget):
         self.consegne_standard.show()
         
     def go_colliConsegna(self, gestoreConsegna):
-    #     self.colli_consegne = VistaColliConsegna(gestoreConsegna)
-    #     self.colli_consegne.show()
+        self.colli_consegne = VistaColliConsegna(gestoreConsegna)
+        self.colli_consegne.show()
         pass
         
     def go_consegnePositive(self, gestoreConsegna):

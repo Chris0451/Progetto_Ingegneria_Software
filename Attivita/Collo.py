@@ -6,8 +6,8 @@ class Collo:
         self.volume = volume
         self.aziendaMittente = aziendaMittente
         self.aziendaDestinatario = aziendaDestinatario
-        self.ritiro = ritiro 
-        self.consegna = consegna
+        self.datiRitiro = ritiro 
+        self.datiConsegna = consegna
     def getInfoCollo(self):
         print(f"Codice Collo: {self.codiceCollo}\n")
         print(f"Natura Collo: {self.naturaCollo}\n")

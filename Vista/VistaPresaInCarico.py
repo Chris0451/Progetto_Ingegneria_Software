@@ -32,19 +32,37 @@ class VistaPresaInCarico(QWidget) :
         
     def submit_lettura(self):
         codice = self.inserimento_codice.text()
-        if self.gestoreConsegna.ricercaConsegnaByCodice(codice):
-            consegna_confermata = self.gestoreConsegna.getConsegnaByCodice(codice)
-            if(consegna_confermata.datiConsegna.statoConsegna != "In transito"):
-                self.gestoreConsegna.modificaStatoConsegna(consegna_confermata, "In transito")
-                self.consegna_aggiunta = VistaConsegnaAggiunta()
-                self.consegna_aggiunta.show()
+        if self.gestoreConsegna.ricercaConsegnaLetturaByCodice(codice):
+            consegna_confermata = self.gestoreConsegna.getConsegnaLetturaByCodice(codice)
+            if consegna_confermata.datiConsegna.statoConsegna != "In transito":
+                if self.gestoreConsegna.ricercaConsegnaPositiva(consegna_confermata)==False:
+                    self.gestoreConsegna.presaInCarico(consegna_confermata)
+                    self.consegna_aggiunta = VistaConsegnaAggiunta(consegna_confermata)
+                    self.consegna_aggiunta.show()
+                else:
+                    self.consegna_presente = VistaConsegnaPresente()
+                    self.consegna_presente.show()
             else:
                 self.consegna_presente = VistaConsegnaPresente()
                 self.consegna_presente.show()
+        elif self.gestoreConsegna.ricercaColloLetturaByCodice(codice):
+                collo_confermato = self.gestoreConsegna.getColloLetturaByCodice(codice)
+                if collo_confermato.datiConsegna.statoConsegna != "In transito":
+                    if self.gestoreConsegna.ricercaColloPositivo(collo_confermato)==False:
+                        self.gestoreConsegna.presaInCarico(collo_confermato)
+                        self.consegna_aggiunta = VistaConsegnaAggiunta(collo_confermato)
+                        self.consegna_aggiunta.show()
+                    else:
+                        self.consegna_presente = VistaConsegnaPresente()
+                        self.consegna_presente.show()
+                else:
+                    self.consegna_presente = VistaConsegnaPresente()
+                    self.consegna_presente.show()
         else:
             self.consegna_nonAggiunta = VistaConsegnaNonAggiunta()
             self.consegna_nonAggiunta.show()
         self.inserimento_codice.setText("")
+        
     
     def submit_chiusura(self):
         self.close()

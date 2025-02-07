@@ -1,10 +1,12 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QVBoxLayout
 from Vista.VistaConsegnaSelezionata import VistaConsegnaSelezionata
+import tkinter as tk
 
 class VistaConsegneStandard(QWidget):
     def __init__(self, gestoreConsegna):
         super().__init__()
         self.gestoreConsegna = gestoreConsegna
+        self.root = tk.Tk()
         vlayout = QVBoxLayout()
         self.resize(400, 600)
         self.setWindowTitle("Lista consegne standard")
@@ -21,6 +23,17 @@ class VistaConsegneStandard(QWidget):
         self.indietro.setStyleSheet("font-size: 15px; font-family: Arial;")
         self.indietro.clicked.connect(self.submit_chiusura)
     
+    # AGGIORNANDO I BOTTONI DI CONSEGNA CON TKINTER
+    
+    # def get_generic_button(self, titolo, on_click, argument1, argument2, argument3):
+    #     button = tk.Button(self.root, text=titolo, command=lambda : on_click(argument1, argument2, argument3))
+    #     button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+    #     button.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold;")
+    #     button.clicked.connect(lambda : on_click(argument1, argument2, argument3))
+    #     return button
+    
+    # AGGIORNANDO I BOTTONI DI CONSEGNA CON TKINTER
+    
     def get_generic_button(self, titolo, on_click, argument1, argument2, argument3):
         button = QPushButton(titolo)
         button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -31,6 +44,7 @@ class VistaConsegneStandard(QWidget):
     def opzioni_consegna(self, gestoreConsegna, consegna, contatore):
         self.consegna_selezionata = VistaConsegnaSelezionata(gestoreConsegna, consegna, contatore)
         self.consegna_selezionata.show()
+        self.root.update()
     
     def submit_chiusura(self):
         self.close()

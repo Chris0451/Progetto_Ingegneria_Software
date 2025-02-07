@@ -1,7 +1,7 @@
 class Azienda():
-    def __init__(self, responsabile, indirizzoFatturazione, nomeAzienda, orarioApertura, orarioChiusura, giorniApertura):
+    def __init__(self, responsabile, indirizzoAzienda, nomeAzienda, orarioApertura, orarioChiusura, giorniApertura):
         self.responsabile = responsabile
-        self.indirizzoFatturazione = indirizzoFatturazione
+        self.indirizzoAzienda = indirizzoAzienda
         self.nomeAzienda = nomeAzienda
         self.orarioApertura = orarioApertura
         self.orarioChiusura = orarioChiusura

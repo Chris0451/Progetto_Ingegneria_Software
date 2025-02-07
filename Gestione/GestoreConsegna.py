@@ -1,4 +1,7 @@
 from Attivita.LettoreFile import LettoreFile
+from Attivita.Pacco import Pacco
+from Attivita.Collo import Collo
+
 import datetime
 
 class GestoreConsegna():
@@ -14,24 +17,28 @@ class GestoreConsegna():
         self.listaColliNegativi = []
         self.incassoContrassegno = 0.0
     
-    def presaInCaricoConsegnaStandard(self, codice):
-        consegna_selezionata = self.getConsegnaLetturaByCodice(codice)
-        if consegna_selezionata != None:
+    def presaInCarico(self, consegna_selezionata):
+        if isinstance(consegna_selezionata, Pacco):
             self.listaConsegne.append(consegna_selezionata)
+            return self.modificaStatoConsegna(consegna_selezionata, "In transito")
+        elif isinstance(consegna_selezionata, Collo):
+            self.listaColliConsegne.append(consegna_selezionata)
             return self.modificaStatoConsegna(consegna_selezionata, "In transito")
         return False
         
-    def presaInCaricoCollo(self, codice):
-        collo_selezionato = self.getColloLetturaByCodice(codice)
-        if collo_selezionato != None:
-            self.listaColliConsegne.append(collo_selezionato)
-            return self.modificaStatoConsegna(collo_selezionato, "In transito")
-        
     def confermaConsegna(self, consegna_confermata):
-        if self.ricercaConsegna(consegna_confermata) and consegna_confermata.datiConsegna.statoConsegna!="Consegnato":
-            self.listaConsegnePositive.append(consegna_confermata)
-            self.getConsegna(consegna_confermata).datiConsegna.setStatoConsegna("Consegnato")
-            return True
+        if isinstance(consegna_confermata, Pacco):
+            if self.ricercaConsegna(consegna_confermata) and consegna_confermata.datiConsegna.statoConsegna!="Consegnato":
+                self.listaConsegnePositive.append(consegna_confermata)
+                self.getConsegna(consegna_confermata).datiConsegna.setStatoConsegna("Consegnato")
+                self.listaConsegne.remove(consegna_confermata)
+                return True
+        elif isinstance(consegna_confermata, Collo):
+            if self.ricercaCollo(consegna_confermata) and consegna_confermata.datiConsegna.statoConsegna!="Consegnato":
+                self.listaColliPositivi.append(consegna_confermata)
+                self.getCollo(consegna_confermata).datiConsegna.setStatoConsegna("Consegnato")
+                self.listaColliConsegne.remove(consegna_confermata)
+                return True
         return False
     
     def rimandaConsegna(self, consegna_annullata, nuova_data):
@@ -43,9 +50,13 @@ class GestoreConsegna():
         return False
     
     def modificaStatoConsegna(self, consegna, nuovo_stato):
-        if self.ricercaConsegna(consegna):
-            self.getConsegna(consegna).datiConsegna.setStatoConsegna(nuovo_stato)
-            return True
+        if isinstance(consegna, Pacco):
+            if self.ricercaConsegna(consegna):
+                self.getConsegna(consegna).datiConsegna.setStatoConsegna(nuovo_stato)
+                return True
+        elif isinstance(consegna, Collo):
+            if self.ricercaCollo(consegna):
+                self.getCollo(consegna).datiConsegna.setStatoConsegna(nuovo_stato)
         return False
     
     def modificaOrarioConsegna(self, consegna, nuovo_orario):
@@ -56,6 +67,8 @@ class GestoreConsegna():
             self.incassoContrassegno += self.getConsegna(consegna).datiConsegna.valoreContrassegno
             return True
         return False
+    
+    # ******************************************************
     
     def ricercaConsegna(self, consegna):
         if consegna in self.listaConsegne:
@@ -68,8 +81,24 @@ class GestoreConsegna():
                 return True
         return False
     
+    def ricercaConsegnaLetturaByCodice(self, codice):
+        for consegna in self.listaConsegneLettura:
+            if codice == consegna.datiConsegna.codiceConsegna:
+                return True
+        return False
+    
+    def ricercaConsegnaPositiva(self, consegna):
+        if consegna in self.listaConsegnePositive:
+            return True
+        return False
+    
     def ricercaCollo(self, collo):
         if collo in self.listaColliConsegne:
+            return True
+        return False
+    
+    def ricercaColloPositivo(self, collo):
+        if collo in self.listaColliPositivi:
             return True
         return False
     
@@ -78,6 +107,14 @@ class GestoreConsegna():
             if codice == collo.datiConsegna.codiceConsegna:
                 return True
         return False
+    
+    def ricercaColloLetturaByCodice(self, codice):
+        for collo in self.listaColliConsegneLettura:
+            if codice == collo.datiConsegna.codiceConsegna:
+                return True
+        return False
+    
+    # *****************************************************
     
     def getConsegna(self, consegna):
         if consegna in self.listaConsegne:
@@ -109,8 +146,8 @@ class GestoreConsegna():
     def getColloByCodice(self, codice):
         for collo in self.listaColliConsegne:
             if codice == collo.datiConsegna.codiceConsegna:
-                return True
-        return False
+                return collo
+        return None
     
     def getColloLettura(self, collo):
         if collo in self.listaColliConsegneLettura:
@@ -120,7 +157,7 @@ class GestoreConsegna():
     def getColloLetturaByCodice(self, codice):
         for collo in self.listaColliConsegneLettura:
             if codice == collo.datiConsegna.codiceConsegna:
-                return True
-        return False
+                return collo
+        return None
         
     
