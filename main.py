@@ -8,6 +8,8 @@ from Gestione.GestoreRitiro import GestoreRitiro
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    vista_corriere = VistaAccessoCorriere(GestoreConsegna(), GestoreRitiro())
+    gestoreConsegna = GestoreConsegna()
+    gestoreRitiro = GestoreRitiro()
+    vista_corriere = VistaAccessoCorriere(gestoreConsegna, gestoreRitiro)
     vista_corriere.show()
     sys.exit(app.exec())

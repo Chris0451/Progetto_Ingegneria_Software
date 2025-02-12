@@ -38,5 +38,5 @@ class VistaConsegnaSelezionata(QWidget):
     
     def modifica_orario_consegna(self, gestoreConsegna, consegna_selezionata):
         self.modifica_orario = VistaModificaOrarioConsegna(gestoreConsegna, consegna_selezionata)
-        self.rimanda_consegna.show()
+        self.modifica_orario.show()
         self.close()

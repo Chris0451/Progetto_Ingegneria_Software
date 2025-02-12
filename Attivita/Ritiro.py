@@ -11,10 +11,7 @@ class Ritiro:
     def setStatoRitiro(self, newStatoRitiro):
          self.statoRitiro = newStatoRitiro
     def getInfoRitiro(self):
-         print(f"Codice Ritiro: {self.codiceRitiro}\n")
-         print(f"Data Ritiro: {self.dataRitiro}\n")
-         print(f"Ora Ritiro: {self.oraRitiro}\n")
-         print(f"Stato Ritiro: {self.statoRitiro}\n")
+         return f"Codice Ritiro: {self.codiceRitiro}\nData Ritiro: {self.dataRitiro}\nOra Ritiro: {self.oraRitiro}\nStato Ritiro: {self.statoRitiro}\n"
         
   
          

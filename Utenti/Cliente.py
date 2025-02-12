@@ -10,4 +10,4 @@ class Cliente(Utente):
         self.codiceCliente = codiceCliente
         self.posizione = posizione
     def getInfoCliente(self):
-        return self.getInfoUtente(self) + f", codice cliente: {self.codiceCliente}, info posizione: {self.posizione.getInfoPosizione()}"
+        return self.getInfoUtente() + f"Codice cliente: {self.codiceCliente}\nInfo posizione:\n"+self.posizione.getInfoPosizione()

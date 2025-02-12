@@ -2,8 +2,6 @@ from Attivita.LettoreFile import LettoreFile
 from Attivita.Pacco import Pacco
 from Attivita.Collo import Collo
 
-import datetime
-
 class GestoreConsegna():
     def __init__(self):
         self.codiceConsegne = ""
@@ -42,11 +40,19 @@ class GestoreConsegna():
         return False
     
     def rimandaConsegna(self, consegna_annullata, nuova_data):
-        if self.ricercaConsegna(consegna_annullata) and consegna_annullata.datiConsegna.statoConsegna!="Consegna rimandata":
-            self.getConsegna(consegna_annullata).datiConsegna.setDataConsegna(nuova_data)
-            self.getConsegna(consegna_annullata).datiConsegna.setStatoConsegna("Consegna rimandata")
-            self.listaConsegneNegative.append(consegna_annullata)
-            return True
+        if isinstance(consegna_annullata, Pacco):
+            if self.ricercaConsegna(consegna_annullata) and consegna_annullata.datiConsegna.statoConsegna!="Consegna rimandata":
+                self.getConsegna(consegna_annullata).datiConsegna.setDataConsegna(nuova_data)
+                self.getConsegna(consegna_annullata).datiConsegna.setStatoConsegna("Consegna rimandata")
+                self.listaConsegneNegative.append(consegna_annullata)
+                self.listaConsegne.remove(consegna_annullata)
+                return True
+        elif isinstance(consegna_annullata, Collo):
+            if self.ricercaCollo(consegna_annullata) and consegna_annullata.datiConsegna.statoConsegna!="Consegna rimandata":
+                self.getCollo(consegna_annullata).datiConsegna.setDataConsegna(nuova_data)
+                self.getCollo(consegna_annullata).datiConsegna.setStatoConsegna("Consegna rimandata")
+                self.listaColliNegativi.append(consegna_annullata)
+                self.listaColli.remove(consegna_annullata)
         return False
     
     def modificaStatoConsegna(self, consegna, nuovo_stato):
@@ -60,7 +66,11 @@ class GestoreConsegna():
         return False
     
     def modificaOrarioConsegna(self, consegna, nuovo_orario):
-        pass
+        if self.ricercaConsegna(consegna):
+            consegna.datiConsegna.setOraConsegna(nuovo_orario)
+            return True
+        return False
+            
 
     def aggiornaIncassoContrassegno(self, consegna):
         if self.getConsegna(consegna).datiConsegna.metodoPagamento == "Contrassegno":

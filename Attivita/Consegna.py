@@ -12,10 +12,6 @@ class Consegna:
     def setOraConsegna(self, newOraConsegna):
         self.oraConsegna = newOraConsegna
     def getInfoConsegna(self):
-        print(f"Codice Consegna: {self.codiceConsegna}\n")
-        print(f"Data Consegna: {self.dataConsegna}\n")
-        print(f"Ora Consegna: {self.oraConsegna}\n")
-        print(f"Stato Consegna: {self.statoConsegna}\n")
-        print(f"Valore Contrassegno: {self.valoreContrassegno}\n") 
+        return f"Codice Consegna: {self.codiceConsegna}\nData Consegna: {self.dataConsegna}\nOra Consegna: {self.oraConsegna}\nStato Consegna: {self.statoConsegna}\nValore Contrassegno: {self.valoreContrassegno}\n" 
         
         

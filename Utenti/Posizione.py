@@ -5,5 +5,5 @@ class Posizione:
         self.comune = comune
         self.provincia = provincia
         self.CAP = CAP
-    def infoPosizione(self):
-        return f"Via {self.via}, n. {self.civico} - Comune di {self.comune} - Provincia di {self.provincia} - CAP: {self.CAP}"
+    def getInfoPosizione(self):
+        return f"{self.via}, n. {self.civico}\nComune di {self.comune}\nProvincia: {self.provincia}\nCAP: {self.CAP}\n"

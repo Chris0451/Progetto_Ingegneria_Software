@@ -1,3 +1,6 @@
+from Attivita.Consegna import Consegna
+from Attivita.Ritiro import Ritiro
+
 class Collo:
     def __init__ (self, codiceCollo, naturaCollo, peso, volume, aziendaMittente, aziendaDestinatario, ritiro, consegna):
         self.codiceCollo = codiceCollo
@@ -9,12 +12,7 @@ class Collo:
         self.datiRitiro = ritiro 
         self.datiConsegna = consegna
     def getInfoCollo(self):
-        print(f"Codice Collo: {self.codiceCollo}\n")
-        print(f"Natura Collo: {self.naturaCollo}\n")
-        print(f"Azienda Mittente: {self.aziendaMittente}\n")
-        print(f"Azienda Destinatario: {self.aziendaDestinatario}\n")
-        print("Ritiro: " + self.ritiro.getInfoRitiro())
-        print("Consegna: " + self.consegna.getInfoConsegna())
-        
-        
-        
+        if Consegna!=None:
+            return f"Codice Collo: {self.codiceCollo}\nNatura Collo: {self.naturaCollo}\n\nAzienda Mittente:\n"+self.aziendaMittente.getInfoAzienda()+"\nAzienda Destinatario:\n"+self.aziendaDestinatario.getInfoAzienda()+"\nDati Consegna:\n" + self.datiConsegna.getInfoConsegna()
+        elif Ritiro!=None:
+            return f"Codice Collo: {self.codiceCollo}\nNatura Collo: {self.naturaCollo}\n\nAzienda Mittente:\n"+self.aziendaMittente.getInfoAzienda()+"\nAzienda Destinatario:\n"+self.aziendaDestinatario.getInfoAzienda()+"\nDati Ritiro:\n" + self.datiRitiro.getInfoRitiro()
