@@ -44,7 +44,7 @@ class VistaModificaOrarioConsegna(QWidget):
     
     def submit_modifica_orario(self, gestoreConsegna, consegna_selezionata):
         orario_selezionato = self.imposta_orario.time()
-        if consegna_selezionata.datiConsegna.statoConsegna != "Consegnato":
+        if consegna_selezionata.datiConsegna.statoConsegna != "Consegnato" and consegna_selezionata.datiConsegna.statoConsegna != "Consegna rimandata":
             if isinstance(consegna_selezionata, Pacco):
                 trovato=False
                 orario_minimo = datetime.strptime("08:00", "%H:%M").time()
@@ -88,7 +88,8 @@ class VistaModificaOrarioConsegna(QWidget):
                 else:
                     QMessageBox.warning(self, "Avviso", "Orario già impostato per un'altra consegna", QMessageBox.Ok) 
         else:
-            QMessageBox.warning(self, "Pacco già consegnato")
+            QMessageBox.warning(self, "Avviso","Pacco già consegnato o rimandato in precendenza", QMessageBox.Ok)
+            self.close()
         
     def submit_chiusura(self):
         self.close()

@@ -53,7 +53,7 @@ class VistaRitiri(QWidget):
         pass
     
     def go_colliNonRitirati(self):
-        
+        pass
     
     def go_back(self):
         self.close()

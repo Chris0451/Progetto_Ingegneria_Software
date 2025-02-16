@@ -17,6 +17,13 @@ class VistaConsegnaConfermata(QWidget):
                 flayout.addRow(self.label_conferma)
                 flayout.addRow(self.button_conferma)
                 self.setLayout(flayout)
+            elif consegna_selezionata.datiConsegna.statoConsegna == "Consegna rimandata":
+                self.label_conferma = QLabel("Consegna rimandata in precedenza")
+                self.button_conferma = QPushButton("Okay")
+                flayout = QFormLayout()
+                flayout.addRow(self.label_conferma)
+                flayout.addRow(self.button_conferma)
+                self.setLayout(flayout)
             else:
                 self.label_conferma = QLabel("Errore nella consegna del pacco: pacco consegnato in precedenza")
                 self.button_conferma = QPushButton("Okay")
@@ -27,6 +34,13 @@ class VistaConsegnaConfermata(QWidget):
         elif isinstance(consegna_selezionata, Collo):
             if self.gestoreConsegna.confermaConsegna(self.consegna_selezionata):
                 self.label_conferma = QLabel("Consegna del collo effettuata e inserita nella lista dei colli positive")
+                self.button_conferma = QPushButton("Okay")
+                flayout = QFormLayout()
+                flayout.addRow(self.label_conferma)
+                flayout.addRow(self.button_conferma)
+                self.setLayout(flayout)
+            elif consegna_selezionata.datiConsegna.statoConsegna == "Consegna rimandata":
+                self.label_conferma = QLabel("Consegna rimandata in precedenza")
                 self.button_conferma = QPushButton("Okay")
                 flayout = QFormLayout()
                 flayout.addRow(self.label_conferma)
