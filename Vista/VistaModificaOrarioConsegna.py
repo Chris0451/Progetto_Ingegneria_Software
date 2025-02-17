@@ -29,7 +29,7 @@ class VistaModificaOrarioConsegna(QWidget):
         hlayout.addWidget(self.indietro)
         vlayout.addLayout(hlayout)
         self.setLayout(vlayout)
-        self.conferma.clicked.connect(lambda : self.submit_modifica_orario(self.gestoreConsegna, self.consegna_selezionata))
+        self.conferma.clicked.connect(lambda : self.submit_modifica_orario(self.consegna_selezionata))
         self.indietro.clicked.connect(self.submit_chiusura)
     
     def verifica_orario(self):
@@ -42,7 +42,7 @@ class VistaModificaOrarioConsegna(QWidget):
                nuovo_orario = QTime(orario_selezionato.hour(), 30)
            self.imposta_orario.setTime(nuovo_orario)
     
-    def submit_modifica_orario(self, gestoreConsegna, consegna_selezionata):
+    def submit_modifica_orario(self, consegna_selezionata):
         orario_selezionato = self.imposta_orario.time()
         if consegna_selezionata.datiConsegna.statoConsegna != "Consegnato" and consegna_selezionata.datiConsegna.statoConsegna != "Consegna rimandata":
             if isinstance(consegna_selezionata, Pacco):
@@ -56,12 +56,8 @@ class VistaModificaOrarioConsegna(QWidget):
                         trovato=True
                 if trovato==False:
                     if orario_minimo <= orario_selezionato <= orario_massimo:
-                        if self.gestoreConsegna.modificaOrarioConsegna(consegna_selezionata, orario_selezionato):
-                            msg = QMessageBox()
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setText("Orario modificato con successo")
-                            msg.setWindowTitle("Successo")
-                            msg.setStandardButtons(QMessageBox.Ok)
+                        if self.gestoreConsegna.modificaOrarioConsegna(consegna_selezionata, orario_selezionato.toString("HH:mm")):
+                            QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
                             self.close()
                     else:
                         QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)
@@ -69,19 +65,19 @@ class VistaModificaOrarioConsegna(QWidget):
                     QMessageBox.warning(self, "Avviso", "Orario già impostato per un'altra consegna", QMessageBox.Ok) 
             elif isinstance(consegna_selezionata, Collo):
                 trovato=False
+                print("Ciao")
                 orario_minimo = datetime.strptime(consegna_selezionata.aziendaDestinatario.orarioApertura, "%H:%M").time()
                 orario_massimo = datetime.strptime(consegna_selezionata.aziendaDestinatario.orarioChiusura, "%H:%M").time()
                 for consegna in self.gestoreConsegna.listaColliConsegne:
+                    if consegna == consegna_selezionata:
+                        continue
                     if consegna.datiConsegna.oraConsegna == consegna_selezionata.datiConsegna.oraConsegna:
                         trovato=True
                 if trovato==False:
                     if orario_minimo <= orario_selezionato <= orario_massimo:
-                        if self.gestoreConsegna.modificaOrarioConsegna(consegna_selezionata, orario_selezionato):
-                            msg = QMessageBox()
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setText("Orario modificato con successo")
-                            msg.setWindowTitle("Successo")
-                            msg.setStandardButtons(QMessageBox.Ok)
+                        print("Ciao")
+                        if self.gestoreConsegna.modificaOrarioConsegna(consegna_selezionata, orario_selezionato.toString("HH:mm")):
+                            QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
                             self.close()
                     else:
                         QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)

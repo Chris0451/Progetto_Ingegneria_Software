@@ -27,6 +27,7 @@ class GestoreConsegna():
     def confermaConsegna(self, consegna_confermata):
         if isinstance(consegna_confermata, Pacco):
             if self.ricercaConsegna(consegna_confermata) and consegna_confermata.datiConsegna.statoConsegna!="Consegnato":
+                self.aggiornaIncassoContrassegno(consegna_confermata)
                 self.listaConsegnePositive.append(consegna_confermata)
                 self.getConsegna(consegna_confermata).datiConsegna.setStatoConsegna("Consegnato")
                 self.listaConsegne.remove(consegna_confermata)
@@ -66,14 +67,18 @@ class GestoreConsegna():
         return False
     
     def modificaOrarioConsegna(self, consegna, nuovo_orario):
-        if self.ricercaConsegna(consegna):
-            consegna.datiConsegna.setOraConsegna(nuovo_orario)
-            return True
+        if isinstance(consegna, Pacco):
+            if self.ricercaConsegna(consegna):
+                consegna.datiConsegna.setOraConsegna(nuovo_orario)
+                return True
+        elif isinstance(consegna, Collo):
+            if self.ricercaCollo(consegna):
+                consegna.datiConsegna.setOraConsegna(nuovo_orario)
+                return True
         return False
-            
-
+    
     def aggiornaIncassoContrassegno(self, consegna):
-        if self.getConsegna(consegna).datiConsegna.metodoPagamento == "Contrassegno":
+        if self.getConsegna(consegna).metodoPagamento == "Contrassegno":
             self.incassoContrassegno += self.getConsegna(consegna).datiConsegna.valoreContrassegno
             return True
         return False

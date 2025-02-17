@@ -5,7 +5,7 @@ class VistaConsegnaPresente(QWidget):
         super().__init__()
         self.resize(400,100)
         self.setWindowTitle("Consegna presente")
-        self.label_conferma = QLabel("Pacco già preso in carico")
+        self.label_conferma = QLabel("Codice consegna inserito precedentemente")
         self.click_conferma = QPushButton("Okay", self)
         self.click_conferma.clicked.connect(self.submit)
         self.initUI()
