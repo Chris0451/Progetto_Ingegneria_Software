@@ -53,7 +53,8 @@ class GestoreConsegna():
                 self.getCollo(consegna_annullata).datiConsegna.setDataConsegna(nuova_data)
                 self.getCollo(consegna_annullata).datiConsegna.setStatoConsegna("Consegna rimandata")
                 self.listaColliNegativi.append(consegna_annullata)
-                self.listaColli.remove(consegna_annullata)
+                self.listaColliConsegne.remove(consegna_annullata)
+                return True
         return False
     
     def modificaStatoConsegna(self, consegna, nuovo_stato):

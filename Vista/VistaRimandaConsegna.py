@@ -31,15 +31,15 @@ class VistaRimandaConsegna(QWidget):
         self.indietro.clicked.connect(self.submit_chiusura)
     
     def nuovo_giorno_disponibile(self, giorno_consegna, giorni_disponibili):
+        # Assicurati che tutti i giorni siano con la prima lettera maiuscola
+        giorni_settimana = ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato", "Domenica"]
+        giorni_disponibili = [giorno.capitalize() for giorno in giorni_disponibili]
         
         # Ottieni l'indice del giorno della settimana (0 = lunedì, 6 = domenica)
-        indice_consegna = giorno_consegna.weekday()
+        indice_consegna = giorno_consegna.weekday()  # 0 = Lunedì, 6 = Domenica
         
-        # Converti la lista dei giorni della settimana con la prima lettera maiuscola per confrontare
-        giorni_settimana = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"]
-    
         # A partire dal giorno di consegna, cerca il primo giorno disponibile
-        for i in range(7):
+        for i in range(1, 8):  # Partiamo da 1, per evitare di considerare il giorno stesso
             # Calcola l'indice del giorno da verificare (usando il modulo per far girare la settimana)
             giorno_da_verificare = (indice_consegna + i) % 7
             
@@ -53,9 +53,10 @@ class VistaRimandaConsegna(QWidget):
                 
                 return giorno_disponibile_dt.strftime("%d/%m/%Y")  # Ritorna il primo giorno disponibile
         
-        return None
+        return None  # Se non ci sono giorni compatibili
     
     def rimanda_consegna(self, gestoreConsegna, consegna_selezionata):
+        print(consegna_selezionata.datiConsegna.dataConsegna)
         if consegna_selezionata.datiConsegna.statoConsegna != "Consegnato":
             if isinstance(consegna_selezionata, Pacco):
                 if consegna_selezionata.datiConsegna.statoConsegna != "Consegna rimandata":
@@ -64,16 +65,19 @@ class VistaRimandaConsegna(QWidget):
                     if gestoreConsegna.rimandaConsegna(consegna_selezionata, nuova_data):
                         self.consegna_rimandata()
                 else:
-                    QMessageBox.critical(self, "Errore", "Consegna già rimandata", QMessageBox.Ok, QMessageBox.Ok)
+                    QMessageBox.critical(self, "Errore", "Consegna del pacco già rimandata", QMessageBox.Ok, QMessageBox.Ok)
             elif isinstance(consegna_selezionata, Collo):
-                giorni_disponibili = consegna_selezionata.aziendaDestinatario.giorniApertura
-                giorno_consegna = datetime.strptime(consegna_selezionata.datiConsegna.dataConsegna, "%d/%m/%Y")
-                nuova_data = self.nuovo_giorno_disponibile(giorno_consegna, giorni_disponibili)
-                if nuova_data!=None:
-                    if gestoreConsegna.rimandaConsegna(consegna_selezionata,nuova_data):
-                        self.consegna_rimandata()
+                if consegna_selezionata.datiConsegna.statoConsegna != "Consegna rimandata":
+                    giorni_disponibili = consegna_selezionata.aziendaDestinatario.giorniApertura
+                    giorno_consegna = datetime.strptime(consegna_selezionata.datiConsegna.dataConsegna, "%d/%m/%Y")
+                    nuova_data = self.nuovo_giorno_disponibile(giorno_consegna, giorni_disponibili)
+                    if nuova_data!=None:
+                        if gestoreConsegna.rimandaConsegna(consegna_selezionata,nuova_data):
+                            self.consegna_rimandata()
+                    else:
+                        QMessageBox.critical(self, "Errore", "Data non validata", QMessageBox.Ok, QMessageBox.Ok)
                 else:
-                    QMessageBox.critical(self, "Errore", "Data non validata", QMessageBox.Ok, QMessageBox.Ok)
+                    QMessageBox.critical(self, "Errore", "Consegna del collo già rimandata", QMessageBox.Ok, QMessageBox.Ok)
         else:
             QMessageBox.critical(self, "Errore", "Consegna già effettuata\nImpossibile rimandare", QMessageBox.Ok, QMessageBox.Ok)
     
