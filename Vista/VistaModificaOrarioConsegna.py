@@ -63,11 +63,11 @@ class VistaModificaOrarioConsegna(QWidget):
     
     def submit_modifica_orario(self, consegna_selezionata):
         orario_selezionato = self.imposta_orario.time()
+        orario_consegna = datetime.strptime(consegna_selezionata.datiConsegna.oraConsegna, "%H:%M").time()
         if isinstance(consegna_selezionata, Pacco):
             trovato=False
             orario_minimo = datetime.strptime("08:00", "%H:%M").time()
             orario_massimo = datetime.strptime("19:00", "%H:%M").time()
-            orario_consegna = datetime.strptime(consegna_selezionata.datiConsegna.oraConsegna, "%H:%M").time()
             for consegna in self.gestoreConsegna.listaConsegne:
                 if consegna == consegna_selezionata:
                     continue

@@ -4,7 +4,7 @@
   "F000", "Festa Group", "8:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
  [["Cristian", "Di Cintio", "CD201103K", "3893821832", "cristian.dc@example.com", "CL0002", 
    ["Via Bartolo", 1, "Ancona", "AN", 66019]], 
-  "F001", "DC Group", "15:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
+  "F001", "DC Group", "12:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
  ["C220", "07/02/2025", "14:00", "in deposito"]
 ]
 ***********

@@ -5,7 +5,7 @@ from Vista.VistaConsegnePositive import VistaConsegnePositive
 from Vista.VistaConsegneRimandate import VistaConsegneRimandate
 from Vista.VistaColliConsegna import VistaColliConsegna
 from Vista.VistaColliPositivi import VistaColliPositivi
-# from Vista.VistaColliRimandati import VistaColliRimandati
+from Vista.VistaColliConsegneNegative import VistaColliConsegneNegative
 
 class VistaConsegne(QWidget):
     def __init__(self, gestoreConsegne):
@@ -53,7 +53,6 @@ class VistaConsegne(QWidget):
     def go_colliConsegna(self, gestoreConsegna):
         self.colli_consegne = VistaColliConsegna(gestoreConsegna)
         self.colli_consegne.show()
-        pass
         
     def go_consegnePositive(self, gestoreConsegna):
         self.consegne_positive = VistaConsegnePositive(gestoreConsegna)
@@ -64,14 +63,12 @@ class VistaConsegne(QWidget):
         self.colli_positivi.show()
     
     def go_consegneRimandate(self, gestoreConsegna):
-        pass
         self.consegne_rimandate = VistaConsegneRimandate(gestoreConsegna)
         self.consegne_rimandate.show()
     
     def go_colliRimandati(self, gestoreConsegna):
-        pass
-    #     self.colli_rimandati = VistaColliRimandati(gestoreConsegna)
-    #     self.colli_rimandati.show()
+        self.colli_rimandati = VistaColliConsegneNegative(gestoreConsegna)
+        self.colli_rimandati.show()
     
     def go_back(self):
         self.close()
