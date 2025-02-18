@@ -12,7 +12,12 @@ from Utenti.Posizione import Posizione
 class TestLettoreFile(unittest.TestCase):
 
     # Test per la lettura delle consegne (pacchi normali)
-    @patch("builtins.open", new_callable=mock_open, read_data="['codicePacco', 10, 20, 'tipo', 'pago', ['Mittente', 'Cognome', 'email', '1234', 'CF', 'Cliente001', ['via', '1', 'Comune', 'Prov', '12345']], ['Destinatario', 'Cognome', 'email', '5678', 'CF', 'Cliente002', ['via', '2', 'Comune', 'Prov', '54321']], ['ConsegnaCod', '01/01/2025', '10:00', 'completato', 100]]***********")
+    @patch("builtins.open", new_callable=mock_open, read_data="""
+           ['codicePacco', 10, 20, 'tipo', 'pago', 
+           ['Mittente', 'Cognome', 'email', '1234', 'CF', 'Cliente001', ['via', '1', 'Comune', 'Prov', '12345']], 
+           ['Destinatario', 'Cognome', 'email', '5678', 'CF', 'Cliente002', ['via', '2', 'Comune', 'Prov', '54321']], 
+           ['ConsegnaCod', '01/01/2025', '10:00', 'completato', 100]]
+           ***********""")
     def test_leggi_consegne(self, mock_file):
         lettore_file = LettoreFile()
         pacchi = lettore_file.leggi_consegne()
@@ -32,7 +37,12 @@ class TestLettoreFile(unittest.TestCase):
         self.assertEqual(pacco.consegna.codiceConsegna, 'ConsegnaCod')
 
     # Test per la lettura dei ritiri
-    @patch("builtins.open", new_callable=mock_open, read_data="['codicePacco', 15, 25, 'tipo', 'pago', ['Mittente', 'Cognome', 'email', '1234', 'CF', 'Cliente001', ['via', '1', 'Comune', 'Prov', '12345']], ['Destinatario', 'Cognome', 'email', '5678', 'CF', 'Cliente002', ['via', '2', 'Comune', 'Prov', '54321']], ['RitiroCod', '02/02/2025', '15:00', 'in attesa']]***********")
+    @patch("builtins.open", new_callable=mock_open, read_data="""
+            ['codicePacco', 15, 25, 'tipo', 'pago', 
+            ['Mittente', 'Cognome', 'email', '1234', 'CF', 'Cliente001', ['via', '1', 'Comune', 'Prov', '12345']],
+            ['Destinatario', 'Cognome', 'email', '5678', 'CF', 'Cliente002', ['via', '2', 'Comune', 'Prov', '54321']], 
+            ['RitiroCod', '02/02/2025', '15:00', 'in attesa']]
+            ***********""")
     def test_leggi_ritiri(self, mock_file):
         lettore_file = LettoreFile()
         pacchi = lettore_file.leggi_ritiri()
@@ -53,19 +63,13 @@ class TestLettoreFile(unittest.TestCase):
 
     # Test per la lettura dei colli
     @patch("builtins.open", new_callable=mock_open, read_data=""" 
-    [
-        ['1', 'Elettronica', 20.0, 30.0, 
-        [
-            ['Alberto', 'Festa', 'AF200803H', '3773821832', 'alberto.festa@example.com', 'CL0001', ['Via Michele Fazioli', 1, 'Ancona', 'AN', 66019]], 
-            'F000', 'Festa Group', '8:30', '18:30', ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi']
-        ],
-        [
-            ['Cristian', 'Di Cintio', 'CD201103K', '3893821832', 'cristian.dc@example.com', 'CL0002', ['Via Bartolo', 1, 'Ancona', 'AN', 66019]], 
-            'F001', 'DC Group', '12:30', '18:30', ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi']
-        ],
-        ['C220', '07/02/2025', '14:00', 'in deposito']
-    ]
-    """)
+            ['1', 'Elettronica', 20.0, 30.0, 
+            [['Alberto', 'Festa', 'AF200803H', '3773821832', 'alberto.festa@example.com', 'CL0001', ['Via Michele Fazioli', 1, 'Ancona', 'AN', 66019]], 
+            'F000', 'Festa Group', '8:30', '18:30', ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi']],
+            [['Cristian', 'Di Cintio', 'CD201103K', '3893821832', 'cristian.dc@example.com', 'CL0002', ['Via Bartolo', 1, 'Ancona', 'AN', 66019]], 
+            'F001', 'DC Group', '12:30', '18:30', ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi']],
+            ['C220', '07/02/2025', '14:00', 'in deposito']]
+            """)
     def test_leggi_colli(self, mock_file):
         lettore_file = LettoreFile()
         colli = lettore_file.leggi_lista_colli()
