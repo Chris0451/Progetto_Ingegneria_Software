@@ -1,11 +1,11 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QVBoxLayout
 
-from Vista.VistaConsegneStandard import VistaConsegneStandard
-from Vista.VistaConsegnePositive import VistaConsegnePositive
-from Vista.VistaConsegneRimandate import VistaConsegneRimandate
-from Vista.VistaColliConsegna import VistaColliConsegna
-from Vista.VistaColliPositivi import VistaColliPositivi
-from Vista.VistaColliConsegneNegative import VistaColliConsegneNegative
+from Vista.VisteConsegna.VistaConsegneStandard import VistaConsegneStandard
+from Vista.VisteConsegna.VistaConsegnePositive import VistaConsegnePositive
+from Vista.VisteConsegna.VistaConsegneRimandate import VistaConsegneRimandate
+from Vista.VisteConsegna.VistaColliConsegna import VistaColliConsegna
+from Vista.VisteConsegna.VistaColliPositivi import VistaColliPositivi
+from Vista.VisteConsegna.VistaColliConsegneNegative import VistaColliConsegneNegative
 
 class VistaConsegne(QWidget):
     def __init__(self, gestoreConsegne):

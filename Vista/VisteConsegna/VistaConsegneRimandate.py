@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QHBoxLayout, QVBoxLayout, QListWidget, QLabel, QMessageBox
-from Vista.VistaInfoConsegna import VistaInfoConsegna
+from Vista.VisteConsegna.VistaInfoConsegna import VistaInfoConsegna
 
 class VistaConsegneRimandate(QWidget):
     def __init__(self, gestoreConsegna):

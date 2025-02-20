@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QPushButton, QSizePolicy, QFormLayout, QHBoxLayout, QLabel
 
-from Vista.VistaConsegnaConfermata import VistaConsegnaConfermata
+from Vista.VisteConsegna.VistaConsegnaConfermata import VistaConsegnaConfermata
 
 class VistaEffettuaConsegna(QWidget):
     def __init__(self, gestoreConsegna, consegna_selezionata):

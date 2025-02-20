@@ -1,7 +1,9 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSizePolicy
 
 from Vista.VistaPresaInCarico import VistaPresaInCarico
-from Vista.VistaConsegne import VistaConsegne
+from Vista.VisteConsegna.VistaConsegne import VistaConsegne
+from Vista.VisteRitiro.VistaRitiri import VistaRitiri
+from Vista.VistaDepositoPacchi import VistaDepositoPacchi
 
 class VistaAccessoCorriere(QWidget):
         
@@ -41,10 +43,11 @@ class VistaAccessoCorriere(QWidget):
     def go_listaConsegne(self, gestoreConsegna):
         self.listaConsegne = VistaConsegne(gestoreConsegna)
         self.listaConsegne.show()
-        pass
     
     def go_listaRitiri(self, gestoreRitiro):
-        pass
+        self.listaRitiri = VistaRitiri(gestoreRitiro)
+        self.listaRitiri.show()
     
     def go_deposito(self, gestoreConsegna, gestoreRitiro):
-        pass
+        self.effettuaDeposito = VistaDepositoPacchi(gestoreConsegna, gestoreRitiro)
+        self.effettuaDeposito.show()
