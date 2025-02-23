@@ -4,9 +4,7 @@ from Vista.VisteRitiro.VistaRitiriAziendaliPositivi import VistaRitiriAziendaliP
 from Vista.VisteRitiro.VistaRitiriAziendaliNegativi import VistaRitiriAziendaliNegativi
 from Vista.VisteRitiro.VistaRitiriAziendali import VistaRitiriAziendali
 from Vista.VisteRitiro.VistaRitiriPositivi import VistaRitiriPositivi
-
 from Vista.VisteRitiro.VistaRitiriRimandati import VistaRitiriRimandati
-
 
 class VistaRitiri(QWidget):
     def __init__(self, gestoreRitiro):

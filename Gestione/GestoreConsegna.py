@@ -29,13 +29,13 @@ class GestoreConsegna():
             if self.ricercaConsegna(consegna_confermata) and consegna_confermata.datiConsegna.statoConsegna!="Consegnato":
                 self.aggiornaIncassoContrassegno(consegna_confermata)
                 self.listaConsegnePositive.append(consegna_confermata)
-                self.getConsegna(consegna_confermata).datiConsegna.setStatoConsegna("Consegnato")
+                self.modificaStatoConsegna(consegna_confermata, "Consegnato")
                 self.listaConsegne.remove(consegna_confermata)
                 return True
         elif isinstance(consegna_confermata, Collo):
             if self.ricercaCollo(consegna_confermata) and consegna_confermata.datiConsegna.statoConsegna!="Consegnato":
                 self.listaColliPositivi.append(consegna_confermata)
-                self.getCollo(consegna_confermata).datiConsegna.setStatoConsegna("Consegnato")
+                self.modificaStatoConsegna(consegna_confermata, "Consegnato")
                 self.listaColliConsegne.remove(consegna_confermata)
                 return True
         return False
@@ -44,14 +44,14 @@ class GestoreConsegna():
         if isinstance(consegna_annullata, Pacco):
             if self.ricercaConsegna(consegna_annullata) and consegna_annullata.datiConsegna.statoConsegna!="Consegna rimandata":
                 self.getConsegna(consegna_annullata).datiConsegna.setDataConsegna(nuova_data)
-                self.getConsegna(consegna_annullata).datiConsegna.setStatoConsegna("Consegna rimandata")
+                self.modificaStatoConsegna(consegna_annullata, "Consegna rimandata")
                 self.listaConsegneNegative.append(consegna_annullata)
                 self.listaConsegne.remove(consegna_annullata)
                 return True
         elif isinstance(consegna_annullata, Collo):
             if self.ricercaCollo(consegna_annullata) and consegna_annullata.datiConsegna.statoConsegna!="Consegna rimandata":
                 self.getCollo(consegna_annullata).datiConsegna.setDataConsegna(nuova_data)
-                self.getCollo(consegna_annullata).datiConsegna.setStatoConsegna("Consegna rimandata")
+                self.modificaStatoConsegna(consegna_annullata, "Consegna rimandata")
                 self.listaColliNegativi.append(consegna_annullata)
                 self.listaColliConsegne.remove(consegna_annullata)
                 return True

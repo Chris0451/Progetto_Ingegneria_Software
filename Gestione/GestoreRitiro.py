@@ -2,16 +2,19 @@ from Attivita.LettoreFile import LettoreFile
 from Attivita.Pacco import Pacco
 from Attivita.Collo import Collo
 from Attivita.LettoreFile import LettoreFile
-from datetime import time
+from datetime import datetime
 
 class GestoreRitiro():
     def __init__(self):
+        
         self.listaRitiriLettura = LettoreFile().leggi_ritiri()
         self.listaColliRitiriLettura = LettoreFile().leggi_lista_colli()
+     
         self.listaRitiriPositivi = []
         self.listaRitiriNegativi = []
         self.listaColliPositivi = []
         self.listaColliNegativi = []
+
     
     def ricercaRitiroByCodice(self, codice):
         for ritiro in self.listaRitiriLettura:
@@ -52,6 +55,7 @@ class GestoreRitiro():
                 return True
         return False
     
+
     def rimandaRitiro(self, ritiro_annullato, nuova_data):
         if isinstance(ritiro_annullato, Pacco):
             if self.ricercaRitiroLettura(ritiro_annullato) and ritiro_annullato.datiRitiro.statoRitiro!="Ritiro rimandato":
@@ -68,7 +72,9 @@ class GestoreRitiro():
                 self.listaColliRitiriLettura.remove(ritiro_annullato)
                 return True
         return False
+
     
+
     def modificaStatoRitiro(self, ritiro, nuovo_stato):
         if isinstance(ritiro, Pacco):
             if self.ricercaRitiroLettura(ritiro):
@@ -88,6 +94,7 @@ class GestoreRitiro():
         if collo in self.listaColliPositivi:
             return True
         return False
+
     
     def getRitiroLetturaByCodice(self, codice):
         for ritiro in self.listaRitiriLettura:
@@ -100,6 +107,8 @@ class GestoreRitiro():
             return ritiro
         return None
     
+
+    
     def getColloLetturaByCodice(self, codice):
         for collo in self.listaColliRitiriLettura:
             if codice == collo.datiRitiro.codiceRitiro:
@@ -111,46 +120,52 @@ class GestoreRitiro():
             return collo
         return None
     
+    
+   
+
     def modificaOrarioRitiro(self, ritiro_selezionato, nuovo_orario):
-
-        nuovo_orario = time.fromisoformat(nuovo_orario)
+        # Converte il nuovo orario in formato time se non lo è già
+        if isinstance(nuovo_orario, str):
+            nuovo_orario = datetime.strptime(nuovo_orario, "%H:%M").time()
     
-        if isinstance(ritiro_selezionato, Pacco):
-            for ritiro in self.listaRitiriLettura:
-
-                ritiro.datiRitiro.oraRitiro = time.fromisoformat(ritiro.datiRitiro.oraRitiro)
-                
-                if nuovo_orario == ritiro.datiRitiro.oraRitiro:
-                    return None  
-                
-                return True
-                ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
-    
-        elif isinstance(ritiro_selezionato, Collo):
-            for collo in self.listaColliRitiriLettura:
-                # Converte anche gli orari aziendali
-                collo.datiRitiro.oraRitiro = time.fromisoformat(collo.datiRitiro.oraRitiro)
-                collo.aziendaMittente.orarioApertura = time.fromisoformat(collo.aziendaMittente.orarioApertura)
-                collo.aziendaMittente.orarioChiusura = time.fromisoformat(collo.aziendaMittente.orarioChiusura)
-                
-                if nuovo_orario == collo.datiRitiro.oraRitiro or nuovo_orario > collo.aziendaMittente.orarioChiusura or nuovo_orario < collo.aziendaMittente.orarioApertura:
-                    return None
-                
-                ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
-
+        # Controllo per oggetto Pacco
         if isinstance(ritiro_selezionato, Pacco):
             for ritiro in self.listaRitiriLettura:
                 if nuovo_orario == ritiro.datiRitiro.oraRitiro:
-                    return False
-                return ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
+                    return False  # Orario già esistente
+            ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
+            return True  # Orario modificato con successo
+    
+        # Controllo per oggetto Collo
         elif isinstance(ritiro_selezionato, Collo):
+            orario_apertura = ritiro_selezionato.aziendaMittente.orarioApertura
+            orario_chiusura = ritiro_selezionato.aziendaMittente.orarioChiusura
+            ora_ritiro_attuale = ritiro_selezionato.datiRitiro.oraRitiro
+    
+            # Converte gli orari in formato time se sono stringhe
+            if isinstance(orario_apertura, str):
+                orario_apertura = datetime.strptime(orario_apertura, "%H:%M").time()
+            if isinstance(orario_chiusura, str):
+                orario_chiusura = datetime.strptime(orario_chiusura, "%H:%M").time()
+    
+            # Controllo se l'orario è fuori dall'orario aziendale
+            if nuovo_orario < orario_apertura or nuovo_orario > orario_chiusura:
+                return False  # Orario non valido
+            
+            # Controllo se il nuovo orario coincide con un altro ritiro già esistente
             for collo in self.listaColliRitiriLettura:
-                if nuovo_orario == collo.datiRitiro.oraRitiro:
-                    return False
-                elif nuovo_orario > ritiro.aziedaMittente.orarioChiusura or nuovo_orario < ritiro.aziendaMittente.orarioApertura:
-                    return False
-                return ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
-        
+                if collo != ritiro_selezionato and collo.datiRitiro.oraRitiro == nuovo_orario:
+                    return False  # Orario già impostato per un altro ritiro
+            
+            # Imposta il nuovo orario
+            ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
+            return True  # Orario modificato con successo
+    
+        return False  # Caso generico di fallimento
+
+
+                
+
     def getColloLetturaByCodice(self, codice):
         for collo in self.listaColliRitiriLettura:
             if codice == collo.datiRitiro.codiceRitiro:
@@ -160,3 +175,5 @@ class GestoreRitiro():
     def depositaRitiriPositivi(self):
         self.listaRitiriPositivi.clear()
         self.listaColliPositivi.clear()
+        
+

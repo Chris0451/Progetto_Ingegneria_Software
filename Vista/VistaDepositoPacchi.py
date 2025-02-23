@@ -35,11 +35,11 @@ class VistaDepositoPacchi(QWidget):
 
     def popola_tabella(self):
         for pacco in self.gestoreRitiro.listaRitiriPositivi:
-            self.aggiungi_riga(pacco)
+            self.aggiungi_riga_pacco(pacco)
         for collo in self.gestoreRitiro.listaColliPositivi:
             self.aggiungi_riga_collo(collo)
 
-    def aggiungi_riga(self, pacco):
+    def aggiungi_riga_pacco(self, pacco):
         row_position = self.table_widget.rowCount()
         self.table_widget.insertRow(row_position)
         self.table_widget.setItem(row_position, 0, QTableWidgetItem(pacco.codicePacco))

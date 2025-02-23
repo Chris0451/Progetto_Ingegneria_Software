@@ -33,7 +33,7 @@ class VistaPresaInCarico(QWidget) :
         self.lista_assegnata.setStyleSheet("font-size: 20px; font-family: Arial;")
         self.conferma.clicked.connect(self.submit_lettura)
         self.indietro.clicked.connect(self.submit_chiusura)
-        self.lista_assegnata.clicked.connect(self.submit_consegne_assegnates)
+        self.lista_assegnata.clicked.connect(self.submit_consegne_assegnate)
         
     def submit_lettura(self):
         codice = self.inserimento_codice.text()
@@ -69,7 +69,7 @@ class VistaPresaInCarico(QWidget) :
         self.inserimento_codice.setText("")
         
     
-    def submit_consegne_assegnates(self):
+    def submit_consegne_assegnate(self):
         self.consegne_assegnate = VistaConsegneAssegnate(self.gestoreConsegna)
         self.consegne_assegnate.show()
     

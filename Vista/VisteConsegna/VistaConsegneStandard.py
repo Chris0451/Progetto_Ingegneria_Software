@@ -20,8 +20,7 @@ class VistaConsegneStandard(QWidget):
     def initUI(self):
         self.indietro.setStyleSheet("font-size: 15px; font-family: Arial;")
         self.indietro.clicked.connect(self.submit_chiusura)
-    
-    
+        
     def get_generic_button(self, titolo, on_click, argument1, argument2, argument3):
         button = QPushButton(titolo)
         button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
