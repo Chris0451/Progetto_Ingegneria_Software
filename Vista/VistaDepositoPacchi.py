@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QMessageBox, QTableWidget, QHeaderView,QTableWidgetItem
 from PyQt5.QtCore import Qt
+from Gestione.GestoreBackup import GestoreBackup
 from Attivita.Pacco import Pacco
 from Attivita.Collo import Collo
 
@@ -8,9 +9,10 @@ class VistaDepositoPacchi(QWidget):
         super().__init__()
         self.gestoreConsegna = gestoreConsegna
         self.gestoreRitiro = gestoreRitiro
+        self.gestoreBackup = GestoreBackup(self.gestoreConsegna, self.gestoreRitiro)
 
         self.setWindowTitle("Deposito Pacchi")
-        self.resize("500","450")
+        self.resize(500,450)
         self.layout = QVBoxLayout()
 
         # Tabella per visualizzare i pacchi
@@ -56,8 +58,8 @@ class VistaDepositoPacchi(QWidget):
             self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
             self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.tipo))
             self.table_widget.setItem(row_position, 4, QTableWidgetItem(argument.metodoPagamento))
-            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + pacco.mittente.cognome)) #nome e cognome del mittente
-            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + pacco.destinatario.cognome)) #nome e cognome del destinatario
+            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + argument.mittente.cognome)) #nome e cognome del mittente
+            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + argument.destinatario.cognome)) #nome e cognome del destinatario
             self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiRitiro.statoRitiro))
         elif isinstance(argument, Collo) and type=="Ritiro":
             row_position = self.table_widget.rowCount()
@@ -78,9 +80,9 @@ class VistaDepositoPacchi(QWidget):
             self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
             self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.tipo))
             self.table_widget.setItem(row_position, 4, QTableWidgetItem(argument.metodoPagamento))
-            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + pacco.mittente.cognome)) #nome e cognome del mittente
-            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + pacco.destinatario.cognome)) #nome e cognome del destinatario
-            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiConsegna.statoRitiro))
+            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + argument.mittente.cognome)) #nome e cognome del mittente
+            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + argument.destinatario.cognome)) #nome e cognome del destinatario
+            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiConsegna.statoConsegna))
         elif isinstance(argument, Collo) and type=="Consegna":
             row_position = self.table_widget.rowCount()
             self.table_widget.insertRow(row_position)
@@ -91,7 +93,7 @@ class VistaDepositoPacchi(QWidget):
             self.table_widget.setItem(row_position, 4, QTableWidgetItem("N/A")) #metodo pagamento non presente per i colli
             self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.aziendaMittente.nomeAzienda)) #nome azienda mittente
             self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.aziendaDestinatario.nomeAzienda)) #nome azienda destinatario
-            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiConsegna.statoRitiro))
+            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiConsegna.statoConsegna))
 
 
     def conferma_deposito(self):
@@ -99,6 +101,15 @@ class VistaDepositoPacchi(QWidget):
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
+            self.gestoreBackup.backup_consegne_standard_positive()
+            self.gestoreBackup.backup_consegne_standard_negative()
+            self.gestoreBackup.backup_consegne_colli_positivi()
+            self.gestoreBackup.backup_consegne_colli_negativi()
+            self.gestoreBackup.backup_ritiri_standard_positivi()
+            self.gestoreBackup.backup_ritiri_standard_negativi()
+            self.gestoreBackup.backup_ritiri_colli_positivi()
+            self.gestoreBackup.backup_ritiri_colli_negativi()
             self.gestoreRitiro.depositaRitiriPositivi()
+            self.gestoreConsegna.depositaConsegneNegative()
             QMessageBox.information(self, "Deposito Confermato", "Deposito Pacchi Confermato")
             self.close()

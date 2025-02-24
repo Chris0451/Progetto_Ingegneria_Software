@@ -14,13 +14,11 @@ class VistaInfoRitiro(QWidget):
         vlayout = QVBoxLayout()
         if self.tipo == "Ritiro":
             if self.gestoreRitiro.ricercaRitiroByCodice(self.codice):
-                print("ciao")
                 ritiro_selezionato = self.gestoreRitiro.getRitiroLetturaByCodice(self.codice)
                 info_ritiro = QLabel(ritiro_selezionato.getInfoPaccoRitiro())
                 vlayout.addWidget(info_ritiro)
         elif self.tipo == "Collo":
             if self.gestoreRitiro.ricercaColloByCodice(self.codice):
-                print("ciao")
                 collo_selezionato = self.gestoreRitiro.getColloByCodice(self.codice)
                 info_collo = QLabel(collo_selezionato.getInfoColloRitiro())
                 vlayout.addWidget(info_collo)

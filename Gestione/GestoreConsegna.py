@@ -83,6 +83,10 @@ class GestoreConsegna():
             return True
         return False
     
+    def depositaConsegneNegative(self):
+        self.listaColliNegativi.clear()
+        self.listaConsegneNegative.clear()
+
     # ******************************************************
     
     def ricercaConsegna(self, consegna):

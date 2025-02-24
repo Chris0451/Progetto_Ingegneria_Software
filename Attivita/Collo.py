@@ -14,5 +14,4 @@ class Collo:
     def getInfoColloConsegna(self):
         return f"Codice Collo: {self.codiceCollo}\nNatura Collo: {self.naturaCollo}\n\nAzienda Mittente:\n"+self.aziendaMittente.getInfoAzienda()+"\nAzienda Destinatario:\n"+self.aziendaDestinatario.getInfoAzienda()+"\nDati Consegna:\n" + self.datiConsegna.getInfoConsegna()
     def getInfoColloRitiro(self):
-        print("ciao")
         return f"Codice Collo: {self.codiceCollo}\nNatura Collo: {self.naturaCollo}\n\nAzienda Mittente:\n"+self.aziendaMittente.getInfoAzienda()+"\nAzienda Destinatario:\n"+self.aziendaDestinatario.getInfoAzienda()+"\nDati Ritiro:\n" + self.datiRitiro.getInfoRitiro()
