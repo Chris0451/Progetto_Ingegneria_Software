@@ -12,7 +12,6 @@ class Pacco:
     def getInfoPaccoConsegna(self):
         return f"Codice Pacco: {self.codicePacco}\nPeso: {self.peso}\nVolume: {self.volume}\nTipo: {self.tipo}\nMetodo Pagamento: {self.metodoPagamento}\nConsegna: " + self.datiConsegna.getInfoConsegna() + "\nDestinatario:\n" + self.destinatario.getInfoCliente() + "\nMittente:\n" + self.mittente.getInfoCliente() + "\n"
     def getInfoPaccoRitiro(self):
-        print("ciao")
         return f"Codice Pacco: {self.codicePacco}\nPeso: {self.peso}\nVolume: {self.volume}\nTipo: {self.tipo}\nMetodo Pagamento: {self.metodoPagamento}\Ritiro: " + self.datiRitiro.getInfoRitiro() + "\nDestinatario:\n" + self.destinatario.getInfoCliente() + "\nMittente:\n" + self.mittente.getInfoCliente() + "\n"
            
        

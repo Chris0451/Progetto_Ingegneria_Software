@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QMessageBox, QTableWidget, QHeaderView,QTableWidgetItem
 from PyQt5.QtCore import Qt
+from Attivita.Pacco import Pacco
+from Attivita.Collo import Collo
 
 class VistaDepositoPacchi(QWidget):
     def __init__(self, gestoreConsegna, gestoreRitiro):
@@ -8,6 +10,7 @@ class VistaDepositoPacchi(QWidget):
         self.gestoreRitiro = gestoreRitiro
 
         self.setWindowTitle("Deposito Pacchi")
+        self.resize("500","450")
         self.layout = QVBoxLayout()
 
         # Tabella per visualizzare i pacchi
@@ -34,34 +37,61 @@ class VistaDepositoPacchi(QWidget):
         self.setLayout(self.layout)
 
     def popola_tabella(self):
-        for pacco in self.gestoreRitiro.listaRitiriPositivi:
-            self.aggiungi_riga_pacco(pacco)
-        for collo in self.gestoreRitiro.listaColliPositivi:
-            self.aggiungi_riga_collo(collo)
+        for ritiro_standard in self.gestoreRitiro.listaRitiriPositivi:
+            self.aggiungi_riga(ritiro_standard,"Ritiro")
+        for ritiro_collo in self.gestoreRitiro.listaColliPositivi:
+            self.aggiungi_riga(ritiro_collo,"Ritiro")
+        for consegna_standard in self.gestoreConsegna.listaConsegneNegative:
+            self.aggiungi_riga(consegna_standard,"Consegna")
+        for consegna_colli in self.gestoreConsegna.listaColliNegativi:
+            self.aggiungi_riga(consegna_colli,"Consegna")
+        
 
-    def aggiungi_riga_pacco(self, pacco):
-        row_position = self.table_widget.rowCount()
-        self.table_widget.insertRow(row_position)
-        self.table_widget.setItem(row_position, 0, QTableWidgetItem(pacco.codicePacco))
-        self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(pacco.peso))) #conversione in stringa
-        self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(pacco.volume))) #conversione in stringa
-        self.table_widget.setItem(row_position, 3, QTableWidgetItem(pacco.tipo))
-        self.table_widget.setItem(row_position, 4, QTableWidgetItem(pacco.metodoPagamento))
-        self.table_widget.setItem(row_position, 5, QTableWidgetItem(pacco.mittente.nome + " " + pacco.mittente.cognome)) #nome e cognome del mittente
-        self.table_widget.setItem(row_position, 6, QTableWidgetItem(pacco.destinatario.nome + " " + pacco.destinatario.cognome)) #nome e cognome del destinatario
-        self.table_widget.setItem(row_position, 7, QTableWidgetItem(pacco.datiRitiro.statoRitiro))
-
-    def aggiungi_riga_collo(self, collo):
-        row_position = self.table_widget.rowCount()
-        self.table_widget.insertRow(row_position)
-        self.table_widget.setItem(row_position, 0, QTableWidgetItem(collo.codiceCollo))
-        self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(collo.peso))) #conversione in stringa
-        self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(collo.volume))) #conversione in stringa
-        self.table_widget.setItem(row_position, 3, QTableWidgetItem(collo.naturaCollo))
-        self.table_widget.setItem(row_position, 4, QTableWidgetItem("N/A")) #metodo pagamento non presente per i colli
-        self.table_widget.setItem(row_position, 5, QTableWidgetItem(collo.aziendaMittente.nomeAzienda)) #nome azienda mittente
-        self.table_widget.setItem(row_position, 6, QTableWidgetItem(collo.aziendaDestinatario.nomeAzienda)) #nome azienda destinatario
-        self.table_widget.setItem(row_position, 7, QTableWidgetItem(collo.datiRitiro.statoRitiro))
+    def aggiungi_riga(self, argument,type):
+        if isinstance(argument, Pacco) and type=="Ritiro":
+            row_position = self.table_widget.rowCount()
+            self.table_widget.insertRow(row_position)
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codicePacco))
+            self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
+            self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
+            self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.tipo))
+            self.table_widget.setItem(row_position, 4, QTableWidgetItem(argument.metodoPagamento))
+            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + pacco.mittente.cognome)) #nome e cognome del mittente
+            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + pacco.destinatario.cognome)) #nome e cognome del destinatario
+            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiRitiro.statoRitiro))
+        elif isinstance(argument, Collo) and type=="Ritiro":
+            row_position = self.table_widget.rowCount()
+            self.table_widget.insertRow(row_position)
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codiceCollo))
+            self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
+            self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
+            self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.naturaCollo))
+            self.table_widget.setItem(row_position, 4, QTableWidgetItem("N/A")) #metodo pagamento non presente per i colli
+            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.aziendaMittente.nomeAzienda)) #nome azienda mittente
+            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.aziendaDestinatario.nomeAzienda)) #nome azienda destinatario
+            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiRitiro.statoRitiro))
+        elif isinstance(argument, Pacco) and type=="Consegna":
+            row_position = self.table_widget.rowCount()
+            self.table_widget.insertRow(row_position)
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codicePacco))
+            self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
+            self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
+            self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.tipo))
+            self.table_widget.setItem(row_position, 4, QTableWidgetItem(argument.metodoPagamento))
+            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + pacco.mittente.cognome)) #nome e cognome del mittente
+            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + pacco.destinatario.cognome)) #nome e cognome del destinatario
+            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiConsegna.statoRitiro))
+        elif isinstance(argument, Collo) and type=="Consegna":
+            row_position = self.table_widget.rowCount()
+            self.table_widget.insertRow(row_position)
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codiceCollo))
+            self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
+            self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
+            self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.naturaCollo))
+            self.table_widget.setItem(row_position, 4, QTableWidgetItem("N/A")) #metodo pagamento non presente per i colli
+            self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.aziendaMittente.nomeAzienda)) #nome azienda mittente
+            self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.aziendaDestinatario.nomeAzienda)) #nome azienda destinatario
+            self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiConsegna.statoRitiro))
 
 
     def conferma_deposito(self):

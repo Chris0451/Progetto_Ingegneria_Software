@@ -4,7 +4,6 @@ from Attivita.Collo import Collo
 
 class GestoreConsegna():
     def __init__(self):
-        self.codiceConsegne = ""
         self.listaConsegneLettura = LettoreFile().leggi_consegne()
         self.listaColliConsegneLettura = LettoreFile().leggi_lista_colli_consegne()
         self.listaConsegne = []
