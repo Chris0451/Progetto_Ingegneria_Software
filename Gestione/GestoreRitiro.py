@@ -9,6 +9,7 @@ class GestoreRitiro():
         
         self.listaRitiriLettura = LettoreFile().leggi_ritiri()
         self.listaColliRitiriLettura = LettoreFile().leggi_lista_colli()
+        
         self.listaRitiriPositivi = []
         self.listaRitiriNegativi = []
         self.listaColliPositivi = []
@@ -106,6 +107,29 @@ class GestoreRitiro():
             return ritiro
         return None
     
+    def getRitiroPositivoByCodice(self, codice):
+        for ritiro in self.listaRitiriNegativi:
+            if codice == ritiro.datiRitiro.codiceRitiro:
+                return ritiro
+        return None
+    
+    def getColloPositivoByCodice(self, codice):
+        for collo in self.listaColliPositivi:
+            if codice == collo.datiRitiro.codiceRitiro:
+                return collo
+        return None
+    
+    def getColloNegativoByCodice(self, codice):
+        for collo in self.listaColliNegativi:
+            if codice == collo.datiRitiro.codiceRitiro:
+                return collo
+        return None
+    
+    def getRitiroPositivoByCodice(self, codice):
+        for ritiro in self.listaRitiriPositivi:
+            if codice == ritiro.datiRitiro.codiceRitiro:
+                return ritiro
+        return None
 
     
     def getColloLetturaByCodice(self, codice):
