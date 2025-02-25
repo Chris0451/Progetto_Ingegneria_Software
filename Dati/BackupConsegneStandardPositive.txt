@@ -1,0 +1,36 @@
+Consegna standard positiva n. 1:
+Codice Pacco: 1
+Peso: 20.0
+Volume: 30.0
+Tipo: Elettronica
+Metodo Pagamento: Contrassegno
+
+Consegna:
+Codice Consegna: C110
+Data Consegna: 27/01/2025
+Ora Consegna: 9:30
+Stato Consegna: Consegnato
+Valore Contrassegno: 100
+
+Destinatario:
+Nome e cognome: Cristian Di Cintio
+Codice fiscale: CFCRSTNCNT
+Codice cliente: 12345
+Info posizione:
+Via Roma, n. 10
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Enrico Verdi
+Codice fiscale: EVCNRCNN
+Codice cliente: 67892
+Info posizione:
+Via Napoli, n. 15
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************

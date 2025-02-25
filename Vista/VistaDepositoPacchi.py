@@ -53,18 +53,18 @@ class VistaDepositoPacchi(QWidget):
         if isinstance(argument, Pacco) and type=="Ritiro":
             row_position = self.table_widget.rowCount()
             self.table_widget.insertRow(row_position)
-            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codicePacco))
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.datiRitiro.codiceRitiro))
             self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
             self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
             self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.tipo))
-            self.table_widget.setItem(row_position, 4, QTableWidgetItem(argument.metodoPagamento))
+            self.table_widget.setItem(row_position, 4, QTableWidgetItem("N/A"))
             self.table_widget.setItem(row_position, 5, QTableWidgetItem(argument.mittente.nome + " " + argument.mittente.cognome)) #nome e cognome del mittente
             self.table_widget.setItem(row_position, 6, QTableWidgetItem(argument.destinatario.nome + " " + argument.destinatario.cognome)) #nome e cognome del destinatario
             self.table_widget.setItem(row_position, 7, QTableWidgetItem(argument.datiRitiro.statoRitiro))
         elif isinstance(argument, Collo) and type=="Ritiro":
             row_position = self.table_widget.rowCount()
             self.table_widget.insertRow(row_position)
-            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codiceCollo))
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.datiRitiro.codiceRitiro))
             self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
             self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
             self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.naturaCollo))
@@ -75,7 +75,7 @@ class VistaDepositoPacchi(QWidget):
         elif isinstance(argument, Pacco) and type=="Consegna":
             row_position = self.table_widget.rowCount()
             self.table_widget.insertRow(row_position)
-            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codicePacco))
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.datiConsegna.codiceConsegna))
             self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
             self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
             self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.tipo))
@@ -86,7 +86,7 @@ class VistaDepositoPacchi(QWidget):
         elif isinstance(argument, Collo) and type=="Consegna":
             row_position = self.table_widget.rowCount()
             self.table_widget.insertRow(row_position)
-            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.codiceCollo))
+            self.table_widget.setItem(row_position, 0, QTableWidgetItem(argument.datiConsegna.codiceConsegna))
             self.table_widget.setItem(row_position, 1, QTableWidgetItem(str(argument.peso))) #conversione in stringa
             self.table_widget.setItem(row_position, 2, QTableWidgetItem(str(argument.volume))) #conversione in stringa
             self.table_widget.setItem(row_position, 3, QTableWidgetItem(argument.naturaCollo))
@@ -101,15 +101,8 @@ class VistaDepositoPacchi(QWidget):
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
-            self.gestoreBackup.backup_consegne_standard_positive()
-            self.gestoreBackup.backup_consegne_standard_negative()
-            self.gestoreBackup.backup_consegne_colli_positivi()
-            self.gestoreBackup.backup_consegne_colli_negativi()
-            self.gestoreBackup.backup_ritiri_standard_positivi()
-            self.gestoreBackup.backup_ritiri_standard_negativi()
-            self.gestoreBackup.backup_ritiri_colli_positivi()
-            self.gestoreBackup.backup_ritiri_colli_negativi()
-            self.gestoreRitiro.depositaRitiriPositivi()
+            self.gestoreBackup.effettua_backup()
             self.gestoreConsegna.depositaConsegneNegative()
+            self.gestoreRitiro.depositaRitiriPositivi()
             QMessageBox.information(self, "Deposito Confermato", "Deposito Pacchi Confermato")
             self.close()

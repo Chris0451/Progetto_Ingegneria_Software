@@ -1,0 +1,140 @@
+Ritiro standard positivo n. 1:
+Codice Pacco: 1
+Peso: 20.0
+Volume: 30.0
+Tipo: Elettronica
+Metodo Pagamento: PayPal
+
+Ritiro:
+Codice Ritiro: R110
+Data Ritiro: 27/01/2025
+Ora Ritiro: 9:30
+Stato Ritiro: Ritirato
+
+Destinatario:
+Nome e cognome: Cristian Di Cintio
+Codice fiscale: CFCRSTNCNT
+Codice cliente: 12345
+Info posizione:
+Via Roma, n. 10
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Daniele Amaro
+Codice fiscale: DACNRCNN
+Codice cliente: 67890
+Info posizione:
+Via Napoli, n. 5
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************
+Ritiro standard positivo n. 2:
+Codice Pacco: 2
+Peso: 20.0
+Volume: 30.0
+Tipo: Mobilistica
+Metodo Pagamento: PayPal
+
+Ritiro:
+Codice Ritiro: R111
+Data Ritiro: 27/01/2025
+Ora Ritiro: 9:30
+Stato Ritiro: Ritirato
+
+Destinatario:
+Nome e cognome: Alessandro Rossi
+Codice fiscale: ARCRSVNCNT
+Codice cliente: 12346
+Info posizione:
+Via Roma, n. 12
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Daniele Amaro
+Codice fiscale: DACNRCNN
+Codice cliente: 67890
+Info posizione:
+Via Napoli, n. 5
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************
+Ritiro standard positivo n. 3:
+Codice Pacco: 4
+Peso: 20.0
+Volume: 30.0
+Tipo: Moda
+Metodo Pagamento: PayPal
+
+Ritiro:
+Codice Ritiro: R113
+Data Ritiro: 27/01/2025
+Ora Ritiro: 9:30
+Stato Ritiro: Ritirato
+
+Destinatario:
+Nome e cognome: Alberto Festa
+Codice fiscale: AFCRSTNCNT
+Codice cliente: 12347
+Info posizione:
+Via Roma, n. 14
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Roberto Ferrara
+Codice fiscale: RFCNFCNN
+Codice cliente: 67891
+Info posizione:
+Via Napoli, n. 9
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************
+Ritiro standard positivo n. 4:
+Codice Pacco: 5
+Peso: 20.0
+Volume: 30.0
+Tipo: Cucina
+Metodo Pagamento: PayPal
+
+Ritiro:
+Codice Ritiro: R114
+Data Ritiro: 27/01/2025
+Ora Ritiro: 9:30
+Stato Ritiro: Ritirato
+
+Destinatario:
+Nome e cognome: Alberto Festa
+Codice fiscale: AFCRSTNCNT
+Codice cliente: 12347
+Info posizione:
+Via Roma, n. 14
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Roberto Ferrara
+Codice fiscale: RFCNFCNN
+Codice cliente: 67891
+Info posizione:
+Via Napoli, n. 9
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************

@@ -64,6 +64,8 @@ class VistaModificaOrarioConsegna(QWidget):
     def submit_modifica_orario(self, consegna_selezionata):
         orario_selezionato = self.imposta_orario.time()
         orario_consegna = datetime.strptime(consegna_selezionata.datiConsegna.oraConsegna, "%H:%M").time()
+        print(orario_selezionato)
+        print(orario_consegna)
         if isinstance(consegna_selezionata, Pacco):
             trovato=False
             orario_minimo = datetime.strptime("08:00", "%H:%M").time()
@@ -74,7 +76,7 @@ class VistaModificaOrarioConsegna(QWidget):
                 if consegna.datiConsegna.oraConsegna == consegna_selezionata.datiConsegna.oraConsegna:
                     trovato=True
             if trovato==False:
-                if orario_minimo <= orario_selezionato <= orario_massimo and orario_selezionato >= orario_consegna:
+                if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato >= orario_consegna:
                     if self.gestoreConsegna.modificaOrarioConsegna(consegna_selezionata, orario_selezionato.toString("HH:mm")):
                         QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
                         self.close()
@@ -92,7 +94,7 @@ class VistaModificaOrarioConsegna(QWidget):
                 if consegna.datiConsegna.oraConsegna == consegna_selezionata.datiConsegna.oraConsegna:
                     trovato=True
             if trovato==False:
-                if orario_minimo <= orario_selezionato <= orario_massimo and orario_selezionato >= orario_consegna:
+                if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato >= orario_consegna:
                     if self.gestoreConsegna.modificaOrarioConsegna(consegna_selezionata, orario_selezionato.toString("HH:mm")):
                         QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
                         self.close()

@@ -8,6 +8,7 @@ class VistaConsegnePositive(QWidget):
         self.resize(600, 250)
         self.setWindowTitle("Consegne positive")
         self.label1 = QLabel("Consegne standard positive:")
+        self.label2 = QLabel(f"Incasso Contrassegni:  {self.gestoreConsegna.incassoContrassegno}")
         self.info_consegna = QPushButton("Visualizza info")
         self.indietro = QPushButton("Indietro")
         self.initUI()
@@ -17,6 +18,7 @@ class VistaConsegnePositive(QWidget):
         hlayout = QHBoxLayout()
         self.listaConsegnePositive = QListWidget()
         self.label1.setStyleSheet("font-size: 15px; font-family: Arial; font-weight:bold;")
+        self.label2.setStyleSheet("font-size: 15px; font-family: Arial;")
         i = 0
         for consegnaAssegnata in self.gestoreConsegna.listaConsegnePositive:
             self.listaConsegnePositive.insertItem(i, f"Consegna n. {consegnaAssegnata.datiConsegna.codiceConsegna}")
@@ -28,6 +30,7 @@ class VistaConsegnePositive(QWidget):
         self.indietro.clicked.connect(self.submit_chiusura)
         vlayout.addWidget(self.label1)
         vlayout.addWidget(self.listaConsegnePositive)
+        vlayout.addWidget(self.label2)
         hlayout.addWidget(self.info_consegna)
         hlayout.addWidget(self.indietro)
         vlayout.addLayout(hlayout)

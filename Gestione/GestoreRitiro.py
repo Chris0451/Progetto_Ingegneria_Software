@@ -9,7 +9,6 @@ class GestoreRitiro():
         
         self.listaRitiriLettura = LettoreFile().leggi_ritiri()
         self.listaColliRitiriLettura = LettoreFile().leggi_lista_colli()
-        
         self.listaRitiriPositivi = []
         self.listaRitiriNegativi = []
         self.listaColliPositivi = []

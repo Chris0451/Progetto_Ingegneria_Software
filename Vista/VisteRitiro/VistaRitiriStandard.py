@@ -11,7 +11,7 @@ class VistaRitiriStandard(QWidget):
         self.setWindowTitle("Lista ritiri standard")
         i = 1
         for ritiro in gestoreRitiro.listaRitiriLettura:
-            vlayout.addWidget(self.get_generic_button(f"Ritiro {i}\n\n Codice Ritiro: {ritiro.datiRitiro.codiceRitiro}\n Destinatario: {ritiro.destinatario.nome} {ritiro.destinatario.cognome}\n Indirizzo: {ritiro.destinatario.posizione.via} {ritiro.destinatario.posizione.civico}\n Stato: {ritiro.datiRitiro.statoRitiro}", self.opzioni_ritiro, gestoreRitiro, ritiro, i))
+            vlayout.addWidget(self.get_generic_button(f"Ritiro {i}\n\n Codice Ritiro: {ritiro.datiRitiro.codiceRitiro}\n Mittente: {ritiro.mittente.nome} {ritiro.mittente.cognome}\n Indirizzo: {ritiro.mittente.posizione.via} {ritiro.mittente.posizione.civico}\n Stato: {ritiro.datiRitiro.statoRitiro}", self.opzioni_ritiro, gestoreRitiro, ritiro, i))
             i += 1
         self.indietro = QPushButton("Indietro")
         vlayout.addWidget(self.indietro)

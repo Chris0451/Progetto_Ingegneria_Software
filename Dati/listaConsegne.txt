@@ -1,14 +1,27 @@
 ["1", 20.0, 30.0, "Elettronica", "Contrassegno", 
 ["Cristian", "Di Cintio", "cristian@example.com", "1234567890", "CFCRSTNCNT", "12345", ["Via Roma", "10", "Milano", "MI", "20100"]], 
-["Enrico", "Corradini", "enrico@example.com", "0987654321", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]],
- "C110", "27/01/2025", "9:30", "in deposito", 100]
+["Enrico", "Verdi", "enrico@example.com", "0987654321", "EVCNRCNN", "67892", ["Via Napoli", "15", "Napoli", "NA", "80100"]],
+ "C110", "27/01/2025", "09:30", "in deposito", 100]
 ***********
-["2", 20.0, 30.0, "Elettronica", "Contrassegno", 
+["2", 20.0, 30.0, "Moda", "Contrassegno", 
 ["Cristian", "Di Cintio", "cristian@example.com", "1234567890", "CFCRSTNCNT", "12345", ["Via Roma", "10", "Milano", "MI", "20100"]], 
-["Enrico", "Corradini", "enrico@example.com", "0987654321", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]],
- "C111", "27/01/2025", "9:30", "in deposito", 100]
+["Francesco", "Giovane", "francesco@example.com", "39222221", "FGCNRCNG", "67893", ["Via Napoli", "17", "Napoli", "NA", "80100"]],
+ "C111", "27/01/2025", "09:30", "in deposito", 200]
 ***********
-["3", 20.0, 30.0, "Elettronica", "Contrassegni", 
+["3", 20.0, 30.0, "Elettronica", "Carta di credito", 
 ["Cristian", "Di Cintio", "cristian@example.com", "1234567890", "CFCRSTNCNT", "12345", ["Via Roma", "10", "Milano", "MI", "20100"]], 
-["Enrico", "Corradini", "enrico@example.com", "0987654321", "CFCNRCNN", "67890", ["Via Napoli", "5", "Napoli", "NA", "80100"]],
- "C112", "27/01/2025", "9:30", "in deposito", 100]
+["Federico", "Di Giovannangelo", "federico@example.com", "39543211", "FDCNRCNF", "67894", ["Via Napoli", "19", "Napoli", "NA", "80100"]],
+ "C112", "27/01/2025", "09:30", "in deposito", 0]
+***********
+["4", 20.0, 30.0, "Cucina", "Carta di credito", 
+["Davide", "Spingenti", "davide@example.com", "39222220", "DSCRSTNCNT", "12348", ["Via Roma", "16", "Milano", "MI", "20100"]], 
+["Federico", "Di Giovannangelo", "federico@example.com", "39543211", "FDCNRCNF", "67894", ["Via Napoli", "19", "Napoli", "NA", "80100"]],
+ "C113", "27/01/2025", "09:30", "in deposito", 0]
+***********
+["5", 20.0, 30.0, "Cucina", "Contrassegno", 
+["Davide", "Spingenti", "davide@example.com", "39222220", "DSCRSTNCNT", "12348", ["Via Roma", "16", "Milano", "MI", "20100"]], 
+["Massimo", "Gialli", "massimo@example.com", "39843848", "MSCNRCNF", "67895", ["Via Napoli", "21", "Napoli", "NA", "80100"]],
+ "C114", "27/01/2025", "09:30", "in deposito", 50]
+
+
+

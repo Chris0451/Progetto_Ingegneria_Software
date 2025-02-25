@@ -1,0 +1,108 @@
+Consegna standard negativa n. 1:
+Codice Pacco: 2
+Peso: 20.0
+Volume: 30.0
+Tipo: Moda
+Metodo Pagamento: Contrassegno
+
+Consegna:
+Codice Consegna: C111
+Data Consegna: 2025-01-28 00:00:00
+Ora Consegna: 9:30
+Stato Consegna: Consegna rimandata
+Valore Contrassegno: 200
+
+Destinatario:
+Nome e cognome: Cristian Di Cintio
+Codice fiscale: CFCRSTNCNT
+Codice cliente: 12345
+Info posizione:
+Via Roma, n. 10
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Francesco Giovane
+Codice fiscale: FGCNRCNG
+Codice cliente: 67893
+Info posizione:
+Via Napoli, n. 17
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************
+Consegna standard negativa n. 2:
+Codice Pacco: 4
+Peso: 20.0
+Volume: 30.0
+Tipo: Cucina
+Metodo Pagamento: Carta di credito
+
+Consegna:
+Codice Consegna: C113
+Data Consegna: 2025-01-28 00:00:00
+Ora Consegna: 9:30
+Stato Consegna: Consegna rimandata
+Valore Contrassegno: 0
+
+Destinatario:
+Nome e cognome: Davide Spingenti
+Codice fiscale: DSCRSTNCNT
+Codice cliente: 12348
+Info posizione:
+Via Roma, n. 16
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Federico Di Giovannangelo
+Codice fiscale: FDCNRCNF
+Codice cliente: 67894
+Info posizione:
+Via Napoli, n. 19
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************
+Consegna standard negativa n. 3:
+Codice Pacco: 5
+Peso: 20.0
+Volume: 30.0
+Tipo: Cucina
+Metodo Pagamento: Contrassegno
+
+Consegna:
+Codice Consegna: C114
+Data Consegna: 2025-01-28 00:00:00
+Ora Consegna: 9:30
+Stato Consegna: Consegna rimandata
+Valore Contrassegno: 50
+
+Destinatario:
+Nome e cognome: Davide Spingenti
+Codice fiscale: DSCRSTNCNT
+Codice cliente: 12348
+Info posizione:
+Via Roma, n. 16
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Massimo Gialli
+Codice fiscale: MSCNRCNF
+Codice cliente: 67895
+Info posizione:
+Via Napoli, n. 21
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************

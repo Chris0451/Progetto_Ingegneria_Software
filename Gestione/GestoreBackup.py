@@ -68,3 +68,14 @@ class GestoreBackup():
                 f.write(f"Ritiro di collo negativo n.{i}:\n{collo.getInfoColloRitiro()}\n************\n")
                 i+=1
         f.close()
+    
+    def effettua_backup(self):
+        self.backup_consegne_standard_positive()
+        self.backup_consegne_standard_negative()
+        self.backup_consegne_colli_positivi()
+        self.backup_consegne_colli_negativi()
+        self.backup_ritiri_standard_positivi()
+        self.backup_ritiri_standard_negativi()
+        self.backup_ritiri_colli_positivi()
+        self.backup_ritiri_colli_negativi()
+        

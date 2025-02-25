@@ -66,17 +66,21 @@ class VistaModificaOrarioRitiro(QWidget):
     def submit_modifica_orario(self, ritiro_selezionato):
         orario_selezionato = self.imposta_orario.time()
         orario_ritiro = datetime.strptime(ritiro_selezionato.datiRitiro.oraRitiro, "%H:%M").time()
+        print(orario_selezionato)
+        print(orario_ritiro)
         if isinstance(ritiro_selezionato, Pacco):
             trovato=False
             orario_minimo = datetime.strptime("08:00", "%H:%M").time()
             orario_massimo = datetime.strptime("19:00", "%H:%M").time()
+            print(orario_minimo)
+            print(orario_massimo)
             for ritiro in self.gestoreRitiro.listaRitiriLettura:
                 if ritiro == ritiro_selezionato:
                     continue
                 if ritiro.datiRitiro.oraRitiro == ritiro_selezionato.datiRitiro.oraRitiro:
                     trovato=True
             if trovato==False:
-                if orario_minimo <= orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
+                if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
                     if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.toString("HH:mm")):
                         QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
                         self.close()
@@ -94,7 +98,7 @@ class VistaModificaOrarioRitiro(QWidget):
                 if ritiro.datiRitiro.oraRitiro == ritiro_selezionato.datiRitiro.oraRitiro:
                     trovato=True
             if trovato==False:
-                if orario_minimo <= orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
+                if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
                     if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.toString("HH:mm")):
                         QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
                         self.close()

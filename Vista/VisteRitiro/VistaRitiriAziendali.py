@@ -11,7 +11,7 @@ class VistaRitiriAziendali(QWidget):
         self.setWindowTitle("Lista colli da ritirare")
         i = 1
         for collo in gestoreRitiro.listaColliRitiriLettura:
-            vlayout.addWidget(self.get_generic_button(f"Collo {i}\n\n Codice: {collo.codiceCollo}\n Natura: {collo.naturaCollo}\n Azienda Mittente: {collo.aziendaMittente.nomeAzienda}\n Orario apertura: {collo.aziendaMittente.orarioApertura}\n Orario chiusura: {collo.aziendaMittente.orarioChiusura}", self.opzioni_ritiro, gestoreRitiro, collo, i))
+            vlayout.addWidget(self.get_generic_button(f"Collo {i}\n\n Codice: {collo.codiceCollo}\n Natura: {collo.naturaCollo}\n Azienda Mittente: {collo.aziendaMittente.nomeAzienda}\nIndirizzo: {collo.aziendaMittente.responsabile.posizione.getInfoPosizione()} Orario apertura: {collo.aziendaMittente.orarioApertura}\n Orario chiusura: {collo.aziendaMittente.orarioChiusura}", self.opzioni_ritiro, gestoreRitiro, collo, i))
             i += 1
         self.indietro = QPushButton("Indietro")
         vlayout.addWidget(self.indietro)
