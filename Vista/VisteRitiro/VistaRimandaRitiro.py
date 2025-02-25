@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from Attivita.Pacco import Pacco
 from Attivita.Collo import Collo
 
-
 class VistaRimandaRitiro(QWidget):
     def __init__(self, gestoreRitiro, ritiro_selezionato):
         super().__init__()
@@ -32,18 +31,19 @@ class VistaRimandaRitiro(QWidget):
         
     def rimanda_ritiro(self, gestoreRitiro, ritiro_selezionato, giorno_ritiro):
          # indice_ritiro = giorno_ritiro.weekday()
-         if ritiro_selezionato.datiRitiro.statoRitiro != "Ritirato":
+         if ritiro_selezionato.datiRitiro.statoRitiro != "Ritirato" and  ritiro_selezionato.datiRitiro.statoRitiro != "Ritiro rimandato":
              if isinstance(ritiro_selezionato, Pacco):
                  if ritiro_selezionato.datiRitiro.statoRitiro != "Ritiro rimandato":
                      data_ritiro_selezionato = datetime.strptime(ritiro_selezionato.datiRitiro.dataRitiro, "%d/%m/%Y")
                      nuova_data = data_ritiro_selezionato + timedelta(days=1)
-                     if gestoreRitiro.rimandaRitiro(ritiro_selezionato, nuova_data):
+                     nuova_data_str=nuova_data.strftime("%d/%m/%Y")
+                     if gestoreRitiro.rimandaRitiro(ritiro_selezionato, nuova_data_str):
                          self.ritiro_rimandato()
                  else:
                      QMessageBox.critical(self, "Errore", "Ritiro già rimandato", QMessageBox.Ok, QMessageBox.Ok)
              elif isinstance(ritiro_selezionato, Collo):
                  giorni_disponibili = ritiro_selezionato.aziendaMittente.giorniApertura
-                 giorno_consegna = datetime.strptime(ritiro_selezionato.datiRitiro.dataRitiro, "%d/%m/%Y")
+                 giorno_ritiro = datetime.strptime(ritiro_selezionato.datiRitiro.dataRitiro, "%d/%m/%Y")
                  nuova_data = self.nuovo_giorno_disponibile(giorno_ritiro, giorni_disponibili)
                  if nuova_data!=None:
                      if gestoreRitiro.rimandaRitiro(ritiro_selezionato ,nuova_data):
@@ -51,7 +51,7 @@ class VistaRimandaRitiro(QWidget):
                  else:
                      QMessageBox.critical(self, "Errore", "Data non validata", QMessageBox.Ok, QMessageBox.Ok)
          else:
-             QMessageBox.critical(self, "Errore", "Ritiro già effettuato\nImpossibile rimandare", QMessageBox.Ok, QMessageBox.Ok)
+             QMessageBox.critical(self, "Errore", "Ritiro già effettuato o rimandato\nImpossibile rimandare", QMessageBox.Ok, QMessageBox.Ok)
      
     
     def nuovo_giorno_disponibile(self, giorno_ritiro, giorni_disponibili):

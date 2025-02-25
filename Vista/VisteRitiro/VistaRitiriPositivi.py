@@ -46,7 +46,7 @@ class VistaRitiriPositivi(QWidget):
                 if len(dati_ritiro) == 2:
                     tipo = dati_ritiro[0]
                     codice = dati_ritiro[1]
-                    self.visione_ritiro = VistaInfoRitiro(gestoreRitiro, tipo, codice)
+                    self.visione_ritiro = VistaInfoRitiro(gestoreRitiro, tipo, codice, "Lista Positiva")
                     self.visione_ritiro.show()
                     self.listaRitiriPositivi.setCurrentRow(-1)
                 else:

@@ -1,0 +1,78 @@
+Ritiro di collo negativo n.1:
+Codice Collo: 1
+Natura Collo: Elettronica
+
+Azienda Mittente:
+Nome azienda: Festa Group
+Responsabile Azienda:
+Nome e cognome: Alberto Festa
+Codice fiscale: AF200803H
+Codice cliente: CL0001
+Info posizione:
+Via Michele Fazioli, n. 1
+Comune di Ancona
+Provincia: AN
+CAP: 66019
+Orario apertura: 08:30 18:30
+Giorni apertura: Lunedi, Martedi, Mercoledi, Giovedi, Venerdi
+
+Azienda Destinatario:
+Nome azienda: DC Group
+Responsabile Azienda:
+Nome e cognome: Cristian Di Cintio
+Codice fiscale: CD201103K
+Codice cliente: CL0002
+Info posizione:
+Via Bartolo, n. 1
+Comune di Ancona
+Provincia: AN
+CAP: 66019
+Orario apertura: 08:30 18:30
+Giorni apertura: Lunedi, Martedi, Mercoledi, Giovedi, Venerdi
+
+Dati Ritiro:
+Codice Ritiro: R220
+Data Ritiro: 06/02/2025
+Ora Ritiro: 14:00
+Stato Ritiro: Ritiro rimandato
+
+************
+Ritiro di collo negativo n.2:
+Codice Collo: 2
+Natura Collo: Elettronica
+
+Azienda Mittente:
+Nome azienda: Corradini Group
+Responsabile Azienda:
+Nome e cognome: Enrico Corradini
+Codice fiscale: EC200894W
+Codice cliente: CL0003
+Info posizione:
+Via Gatti Obesi, n. 1
+Comune di Napoli
+Provincia: NA
+CAP: 67000
+Orario apertura: 08:30 18:30
+Giorni apertura: Lunedi, Martedi, Mercoledi, Giovedi, Venerdi
+
+Azienda Destinatario:
+Nome azienda: DG Group
+Responsabile Azienda:
+Nome e cognome: Federico Di Giovannangelo
+Codice fiscale: FD201003Z
+Codice cliente: CL0004
+Info posizione:
+Via Sirolo, n. 1
+Comune di Sirolo
+Provincia: AN
+CAP: 66020
+Orario apertura: 08:30 18:30
+Giorni apertura: Lunedi, Martedi, Mercoledi, Giovedi, Venerdi
+
+Dati Ritiro:
+Codice Ritiro: R221
+Data Ritiro: 06/02/2025
+Ora Ritiro: 14:00
+Stato Ritiro: Ritiro rimandato
+
+************

@@ -10,7 +10,7 @@ class VistaModificaOrarioRitiro(QWidget):
         self.gestoreRitiro = gestoreRitiro
         self.ritiro_selezionato = ritiro_selezionato
 
-        if ritiro_selezionato.datiRitiro.statoRitiro not in ["Ritirato", "Ritiro Rimandato"]:
+        if ritiro_selezionato.datiRitiro.statoRitiro != "Ritiro rimandato" and ritiro_selezionato.datiRitiro.statoRitiro != "Ritirato":
             self.setWindowTitle("Modifica orario ritiro")
             self.setFixedSize(500, 150)
             self.label = QLabel("Seleziona un nuovo orario compatibile:")
@@ -65,21 +65,41 @@ class VistaModificaOrarioRitiro(QWidget):
 
     def submit_modifica_orario(self, ritiro_selezionato):
         orario_selezionato = self.imposta_orario.time()
-        orario_selezionato_str = orario_selezionato.toString("HH:mm")  # Converte in stringa con secondi
-        
+        orario_ritiro = datetime.strptime(ritiro_selezionato.datiRitiro.oraRitiro, "%H:%M").time()
         if isinstance(ritiro_selezionato, Pacco):
+            trovato=False
             orario_minimo = datetime.strptime("08:00", "%H:%M").time()
             orario_massimo = datetime.strptime("19:00", "%H:%M").time()
-        else:
+            for ritiro in self.gestoreRitiro.listaRitiriLettura:
+                if ritiro == ritiro_selezionato:
+                    continue
+                if ritiro.datiRitiro.oraRitiro == ritiro_selezionato.datiRitiro.oraRitiro:
+                    trovato=True
+            if trovato==False:
+                if orario_minimo <= orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
+                    if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.toString("HH:mm")):
+                        QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
+                        self.close()
+                else:
+                        QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)
+            else:
+                QMessageBox.warning(self, "Avviso", "Orario già impostato per un altro ritiro", QMessageBox.Ok) 
+        elif isinstance(ritiro_selezionato, Collo):
+            trovato=False
             orario_minimo = datetime.strptime(ritiro_selezionato.aziendaMittente.orarioApertura, "%H:%M").time()
             orario_massimo = datetime.strptime(ritiro_selezionato.aziendaMittente.orarioChiusura, "%H:%M").time()
-
-        if orario_minimo <= datetime.strptime(orario_selezionato_str, "%H:%M").time() <= orario_massimo and datetime.strptime(orario_selezionato_str, "%H:%M").time() >= datetime.strptime(ritiro_selezionato.datiRitiro.oraRitiro, "%H:%M").time():
-            if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato_str):
-                QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
-                self.close()
+            for ritiro in self.gestoreRitiro.listaColliRitiriLettura:
+                if ritiro == ritiro_selezionato:
+                    continue
+                if ritiro.datiRitiro.oraRitiro == ritiro_selezionato.datiRitiro.oraRitiro:
+                    trovato=True
+            if trovato==False:
+                if orario_minimo <= orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
+                    if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.toString("HH:mm")):
+                        QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
+                        self.close()
+                else:
+                    QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)
             else:
-                QMessageBox.warning(self, "Errore", "Orario già impostato per un altro ritiro", QMessageBox.Ok)
-        else:
-            QMessageBox.warning(self, "Errore", "Orario non valido", QMessageBox.Ok)
-
+                QMessageBox.warning(self, "Avviso", "Orario già impostato per un altro  ritiro", QMessageBox.Ok)     
+        

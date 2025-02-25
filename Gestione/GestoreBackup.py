@@ -22,7 +22,7 @@ class GestoreBackup():
     def backup_consegne_colli_positivi(self):
         with open("Dati/BackupConsegneColliPositivi.txt", "w") as f:
             i = 1
-            for collo in self.gestoreConsegna.listaConsegnePositive:
+            for collo in self.gestoreConsegna.listaColliPositivi:
                 f.write(f"Consegna di collo positiva n.{i}:\n{collo.getInfoColloConsegna()}\n************\n")
                 i+=1
         f.close()
@@ -30,7 +30,7 @@ class GestoreBackup():
     def backup_consegne_colli_negativi(self):
         with open("Dati/BackupConsegneColliNegativi.txt", "w") as f:
             i = 1
-            for collo in self.gestoreConsegna.listaConsegnePositive:
+            for collo in self.gestoreConsegna.listaColliNegativi:
                 f.write(f"Consegna di collo negativo n.{i}:\n{collo.getInfoColloConsegna()}\n************\n")
                 i+=1
         f.close()
@@ -56,7 +56,7 @@ class GestoreBackup():
     def backup_ritiri_colli_positivi(self):
         with open("Dati/BackupRitiriColliPositivi.txt", "w") as f:
             i = 1
-            for collo in self.gestoreConsegna.listaConsegnePositive:
+            for collo in self.gestoreRitiro.listaColliPositivi:
                 f.write(f"Ritiro di collo positivo n.{i}:\n{collo.getInfoColloRitiro()}\n************\n")
                 i+=1
         f.close()
@@ -64,7 +64,7 @@ class GestoreBackup():
     def backup_ritiri_colli_negativi(self):
         with open("Dati/BackupRitiriColliNegativi.txt", "w") as f:
             i = 1
-            for collo in self.gestoreConsegna.listaConsegnePositive:
+            for collo in self.gestoreRitiro.listaColliNegativi:
                 f.write(f"Ritiro di collo negativo n.{i}:\n{collo.getInfoColloRitiro()}\n************\n")
                 i+=1
         f.close()

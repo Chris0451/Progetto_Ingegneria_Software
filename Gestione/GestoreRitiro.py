@@ -60,7 +60,7 @@ class GestoreRitiro():
         if isinstance(ritiro_annullato, Pacco):
             if self.ricercaRitiroLettura(ritiro_annullato) and ritiro_annullato.datiRitiro.statoRitiro!="Ritiro rimandato":
                 self.getRitiroLettura(ritiro_annullato).datiRitiro.setDataRitiro(nuova_data)
-                self.getRitiroLettura(ritiro_annullato).datiRitiro.setStatoRitiro("CRitiro rimandato")
+                self.getRitiroLettura(ritiro_annullato).datiRitiro.setStatoRitiro("Ritiro rimandato")
                 self.listaRitiriNegativi.append(ritiro_annullato)
                 self.listaRitiriLettura.remove(ritiro_annullato)
                 return True
@@ -107,7 +107,7 @@ class GestoreRitiro():
             return ritiro
         return None
     
-    def getRitiroPositivoByCodice(self, codice):
+    def getRitiroNegativoByCodice(self, codice):
         for ritiro in self.listaRitiriNegativi:
             if codice == ritiro.datiRitiro.codiceRitiro:
                 return ritiro

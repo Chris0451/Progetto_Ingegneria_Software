@@ -43,7 +43,7 @@ class VistaRitiriAziendaliPositivi(QWidget):
                 if len(dati_collo) == 2:  # Controllo se la divisione è valida
                     tipo = dati_collo[0]
                     codice = dati_collo[1]
-                    self.visione_ritiro = VistaInfoRitiro(gestoreRitiro, tipo, codice)
+                    self.visione_ritiro = VistaInfoRitiro(gestoreRitiro, tipo, codice, "Lista Positiva")
                     self.visione_ritiro.show()
                     self.listaColliPositivi.setCurrentRow(-1)
                 else:

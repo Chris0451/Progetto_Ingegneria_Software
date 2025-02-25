@@ -56,7 +56,7 @@ class VistaRimandaConsegna(QWidget):
         return None  # Se non ci sono giorni compatibili
     
     def rimanda_consegna(self, gestoreConsegna, consegna_selezionata):
-        print(consegna_selezionata.datiConsegna.dataConsegna)
+        #print(consegna_selezionata.datiConsegna.dataConsegna)
         if consegna_selezionata.datiConsegna.statoConsegna != "Consegnato":
             if isinstance(consegna_selezionata, Pacco):
                 if consegna_selezionata.datiConsegna.statoConsegna != "Consegna rimandata":

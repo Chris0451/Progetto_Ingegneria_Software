@@ -10,8 +10,8 @@ class Pacco:
         self.datiConsegna = datiConsegna
         self.datiRitiro = datiRitiro
     def getInfoPaccoConsegna(self):
-        return f"Codice Pacco: {self.codicePacco}\nPeso: {self.peso}\nVolume: {self.volume}\nTipo: {self.tipo}\nMetodo Pagamento: {self.metodoPagamento}\nConsegna: " + self.datiConsegna.getInfoConsegna() + "\nDestinatario:\n" + self.destinatario.getInfoCliente() + "\nMittente:\n" + self.mittente.getInfoCliente() + "\n"
+        return f"Codice Pacco: {self.codicePacco}\nPeso: {self.peso}\nVolume: {self.volume}\nTipo: {self.tipo}\nMetodo Pagamento: {self.metodoPagamento}\n\nConsegna:\n" + self.datiConsegna.getInfoConsegna() + "\nDestinatario:\n" + self.destinatario.getInfoCliente() + "\nMittente:\n" + self.mittente.getInfoCliente() + "\n"
     def getInfoPaccoRitiro(self):
-        return f"Codice Pacco: {self.codicePacco}\nPeso: {self.peso}\nVolume: {self.volume}\nTipo: {self.tipo}\nMetodo Pagamento: {self.metodoPagamento}\Ritiro: " + self.datiRitiro.getInfoRitiro() + "\nDestinatario:\n" + self.destinatario.getInfoCliente() + "\nMittente:\n" + self.mittente.getInfoCliente() + "\n"
+        return f"Codice Pacco: {self.codicePacco}\nPeso: {self.peso}\nVolume: {self.volume}\nTipo: {self.tipo}\nMetodo Pagamento: {self.metodoPagamento}\n\nRitiro:\n" + self.datiRitiro.getInfoRitiro() + "\nDestinatario:\n" + self.destinatario.getInfoCliente() + "\nMittente:\n" + self.mittente.getInfoCliente() + "\n"
            
        

@@ -44,7 +44,7 @@ class VistaRitiriRimandati(QWidget):
                 if len(dati_cns) == 2:  # Controllo se la divisione è valida
                     tipo = dati_cns[0]
                     codice = dati_cns[1]
-                    self.visione_ritiro = VistaInfoRitiro(gestoreRitiro, tipo, codice)
+                    self.visione_ritiro = VistaInfoRitiro(gestoreRitiro, tipo, codice, "Lista Negativa")
                     self.visione_ritiro.show()
                     self.listaRitiriNegativi.setCurrentRow(-1)
                 else:

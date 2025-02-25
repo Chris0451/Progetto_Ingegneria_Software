@@ -1,12 +1,50 @@
 Ritiro standard negativo n. 1:
-Codice Pacco: 3
+Codice Pacco: 2
 Peso: 20.0
 Volume: 30.0
 Tipo: Elettronica
-Metodo Pagamento: Contrassegni\Ritiro: Codice Ritiro: R112
-Data Ritiro: 2025-01-28 00:00:00
+Metodo Pagamento: Contrassegno
+
+Ritiro:
+Codice Ritiro: R111
+Data Ritiro: 28/01/2025
 Ora Ritiro: 9:30
-Stato Ritiro: CRitiro rimandato
+Stato Ritiro: Ritiro rimandato
+
+Destinatario:
+Nome e cognome: Cristian Di Cintio
+Codice fiscale: CFCRSTNCNT
+Codice cliente: 12345
+Info posizione:
+Via Roma, n. 10
+Comune di Milano
+Provincia: MI
+CAP: 20100
+
+Mittente:
+Nome e cognome: Enrico Corradini
+Codice fiscale: CFCNRCNN
+Codice cliente: 67890
+Info posizione:
+Via Napoli, n. 5
+Comune di Napoli
+Provincia: NA
+CAP: 80100
+
+
+************
+Ritiro standard negativo n. 2:
+Codice Pacco: 1
+Peso: 20.0
+Volume: 30.0
+Tipo: Elettronica
+Metodo Pagamento: Contrassegno
+
+Ritiro:
+Codice Ritiro: R110
+Data Ritiro: 28/01/2025
+Ora Ritiro: 9:30
+Stato Ritiro: Ritiro rimandato
 
 Destinatario:
 Nome e cognome: Cristian Di Cintio
