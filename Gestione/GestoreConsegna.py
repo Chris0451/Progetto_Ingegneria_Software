@@ -69,11 +69,11 @@ class GestoreConsegna():
     def modificaOrarioConsegna(self, consegna, nuovo_orario):
         if isinstance(consegna, Pacco):
             if self.ricercaConsegna(consegna):
-                consegna.datiConsegna.setOraConsegna(nuovo_orario)
+                self.getConsegna(consegna).datiConsegna.setOraConsegna(nuovo_orario)
                 return True
         elif isinstance(consegna, Collo):
             if self.ricercaCollo(consegna):
-                consegna.datiConsegna.setOraConsegna(nuovo_orario)
+                self.getConsegna(consegna).datiConsegna.setOraConsegna(nuovo_orario)
                 return True
         return False
     

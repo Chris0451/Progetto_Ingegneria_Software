@@ -64,46 +64,26 @@ class VistaModificaOrarioRitiro(QWidget):
             self.imposta_orario.setTime(nuovo_orario)
 
     def submit_modifica_orario(self, ritiro_selezionato):
-        orario_selezionato = self.imposta_orario.time()
+        orario_selezionato = self.imposta_orario.time().toPyTime()
         orario_ritiro = datetime.strptime(ritiro_selezionato.datiRitiro.oraRitiro, "%H:%M").time()
-        print(orario_selezionato)
-        print(orario_ritiro)
         if isinstance(ritiro_selezionato, Pacco):
             trovato=False
             orario_minimo = datetime.strptime("08:00", "%H:%M").time()
             orario_massimo = datetime.strptime("19:00", "%H:%M").time()
-            print(orario_minimo)
-            print(orario_massimo)
-            for ritiro in self.gestoreRitiro.listaRitiriLettura:
-                if ritiro == ritiro_selezionato:
-                    continue
-                if ritiro.datiRitiro.oraRitiro == ritiro_selezionato.datiRitiro.oraRitiro:
-                    trovato=True
-            if trovato==False:
-                if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
-                    if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.toString("HH:mm")):
-                        QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
-                        self.close()
-                else:
-                        QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)
+            if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato > orario_ritiro:
+                if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.strftime("%H:%M")):
+                    QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
+                    self.close()
             else:
-                QMessageBox.warning(self, "Avviso", "Orario già impostato per un altro ritiro", QMessageBox.Ok) 
+                QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)
         elif isinstance(ritiro_selezionato, Collo):
             trovato=False
             orario_minimo = datetime.strptime(ritiro_selezionato.aziendaMittente.orarioApertura, "%H:%M").time()
             orario_massimo = datetime.strptime(ritiro_selezionato.aziendaMittente.orarioChiusura, "%H:%M").time()
-            for ritiro in self.gestoreRitiro.listaColliRitiriLettura:
-                if ritiro == ritiro_selezionato:
-                    continue
-                if ritiro.datiRitiro.oraRitiro == ritiro_selezionato.datiRitiro.oraRitiro:
-                    trovato=True
-            if trovato==False:
-                if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato >= orario_ritiro:
-                    if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.toString("HH:mm")):
-                        QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
-                        self.close()
-                else:
-                    QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)
+            if orario_selezionato >= orario_minimo and orario_selezionato <= orario_massimo and orario_selezionato > orario_ritiro:
+                if self.gestoreRitiro.modificaOrarioRitiro(ritiro_selezionato, orario_selezionato.strftime("%H:%M")):
+                    QMessageBox.information(self, "Successo", "Orario modificato con successo", QMessageBox.Ok)
+                    self.close()
             else:
-                QMessageBox.warning(self, "Avviso", "Orario già impostato per un altro  ritiro", QMessageBox.Ok)     
+                QMessageBox.warning(self, "Avviso", "Orario non valido",QMessageBox.Ok)    
         

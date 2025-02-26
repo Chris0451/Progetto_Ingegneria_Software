@@ -8,7 +8,7 @@ class VistaConsegnaConfermata(QWidget):
         self.gestoreConsegna = gestoreConsegna
         self.consegna_selezionata = consegna_selezionata
         self.setWindowTitle("Consegna effettuata")
-        self.setFixedSize(450,100)
+        self.setFixedSize(500,100)
         if isinstance(consegna_selezionata, Pacco):
             if self.gestoreConsegna.confermaConsegna(self.consegna_selezionata):
                 self.label_conferma = QLabel("Consegna effettuata e inserita nella lista delle consegne positive")

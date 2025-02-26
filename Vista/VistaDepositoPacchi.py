@@ -12,7 +12,7 @@ class VistaDepositoPacchi(QWidget):
         self.gestoreBackup = GestoreBackup(self.gestoreConsegna, self.gestoreRitiro)
 
         self.setWindowTitle("Deposito Pacchi")
-        self.resize(500,450)
+        self.resize(700,550)
         self.layout = QVBoxLayout()
 
         # Tabella per visualizzare i pacchi

@@ -72,7 +72,43 @@ class GestoreRitiro():
                 return True
         return False
 
+    def modificaOrarioRitiro(self, ritiro_selezionato, nuovo_orario):
+        # Converte il nuovo orario in formato time se non lo è già
+        if isinstance(nuovo_orario, str):
+            nuovo_orario = datetime.strptime(nuovo_orario, "%H:%M").time()
+        # Controllo per oggetto Pacco
+        if isinstance(ritiro_selezionato, Pacco):
+            for ritiro in self.listaRitiriLettura:
+                if nuovo_orario == ritiro.datiRitiro.oraRitiro:
+                    return False  # Orario già esistente
+            self.getRitiroLettura(ritiro_selezionato).datiRitiro.setOraRitiro(nuovo_orario.strftime("%H:%M"))
+            return True  # Orario modificato con successo
     
+        # Controllo per oggetto Collo
+        elif isinstance(ritiro_selezionato, Collo):
+            orario_apertura = ritiro_selezionato.aziendaMittente.orarioApertura
+            orario_chiusura = ritiro_selezionato.aziendaMittente.orarioChiusura
+    
+            # Converte gli orari in formato time se sono stringhe
+            if isinstance(orario_apertura, str):
+                orario_apertura = datetime.strptime(orario_apertura, "%H:%M").time()
+            if isinstance(orario_chiusura, str):
+                orario_chiusura = datetime.strptime(orario_chiusura, "%H:%M").time()
+    
+            # Controllo se l'orario è fuori dall'orario aziendale
+            if nuovo_orario < orario_apertura or nuovo_orario > orario_chiusura:
+                return False  # Orario non valido
+            
+            # Controllo se il nuovo orario coincide con un altro ritiro già esistente
+            for collo in self.listaColliRitiriLettura:
+                if collo != ritiro_selezionato and collo.datiRitiro.oraRitiro == nuovo_orario:
+                    return False  # Orario già impostato per un altro ritiro
+            
+            # Imposta il nuovo orario
+            self.getColloLettura(ritiro_selezionato).datiRitiro.setOraRitiro(nuovo_orario.strftime("%H:%M"))
+            return True  # Orario modificato con successo
+    
+        return False  # Caso generico di fallimento
 
     def modificaStatoRitiro(self, ritiro, nuovo_stato):
         if isinstance(ritiro, Pacco):
@@ -141,52 +177,6 @@ class GestoreRitiro():
         if collo in self.listaColliRitiriLettura:
             return collo
         return None
-    
-    
-   
-
-    def modificaOrarioRitiro(self, ritiro_selezionato, nuovo_orario):
-        # Converte il nuovo orario in formato time se non lo è già
-        if isinstance(nuovo_orario, str):
-            nuovo_orario = datetime.strptime(nuovo_orario, "%H:%M").time()
-    
-        # Controllo per oggetto Pacco
-        if isinstance(ritiro_selezionato, Pacco):
-            for ritiro in self.listaRitiriLettura:
-                if nuovo_orario == ritiro.datiRitiro.oraRitiro:
-                    return False  # Orario già esistente
-            ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
-            return True  # Orario modificato con successo
-    
-        # Controllo per oggetto Collo
-        elif isinstance(ritiro_selezionato, Collo):
-            orario_apertura = ritiro_selezionato.aziendaMittente.orarioApertura
-            orario_chiusura = ritiro_selezionato.aziendaMittente.orarioChiusura
-            ora_ritiro_attuale = ritiro_selezionato.datiRitiro.oraRitiro
-    
-            # Converte gli orari in formato time se sono stringhe
-            if isinstance(orario_apertura, str):
-                orario_apertura = datetime.strptime(orario_apertura, "%H:%M").time()
-            if isinstance(orario_chiusura, str):
-                orario_chiusura = datetime.strptime(orario_chiusura, "%H:%M").time()
-    
-            # Controllo se l'orario è fuori dall'orario aziendale
-            if nuovo_orario < orario_apertura or nuovo_orario > orario_chiusura:
-                return False  # Orario non valido
-            
-            # Controllo se il nuovo orario coincide con un altro ritiro già esistente
-            for collo in self.listaColliRitiriLettura:
-                if collo != ritiro_selezionato and collo.datiRitiro.oraRitiro == nuovo_orario:
-                    return False  # Orario già impostato per un altro ritiro
-            
-            # Imposta il nuovo orario
-            ritiro_selezionato.datiRitiro.setOraRitiro(nuovo_orario)
-            return True  # Orario modificato con successo
-    
-        return False  # Caso generico di fallimento
-
-
-                
 
     def getColloLetturaByCodice(self, codice):
         for collo in self.listaColliRitiriLettura:

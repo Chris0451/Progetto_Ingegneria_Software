@@ -7,7 +7,6 @@ from Attivita.Consegna import Consegna
 from Attivita.Ritiro import Ritiro
 from Utenti.Cliente import Cliente
 from Utenti.Azienda import Azienda
-from Utenti.Posizione import Posizione
 
 class TestLettoreFile(unittest.TestCase):
 

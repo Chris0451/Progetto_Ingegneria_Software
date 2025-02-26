@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QSizePolicy, QLabel
 
 from Vista.VistaPresaInCarico import VistaPresaInCarico
 from Vista.VisteConsegna.VistaConsegne import VistaConsegne
@@ -7,12 +7,15 @@ from Vista.VistaDepositoPacchi import VistaDepositoPacchi
 
 class VistaAccessoCorriere(QWidget):
         
-    def __init__(self, gestoreConsegna, gestoreRitiro):
+    def __init__(self, gestoreConsegna, gestoreRitiro, corriere):
         super().__init__()
         self.gestoreConsegna = gestoreConsegna
         self.gestoreRitiro = gestoreRitiro
+        label_corriere = QLabel(f"Ciao {corriere.nome} - Codice Corriere: {corriere.identificativo}")
         vlayout = QVBoxLayout()
         hlayout = QHBoxLayout()
+        label_corriere.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold")
+        vlayout.addWidget(label_corriere)
         vlayout.addWidget(self.get_generic_button("Presa in Carico Pacco", self.go_presaInCarico, gestoreConsegna))
         hlayout.addWidget(self.get_generic_button("Visualizza lista consegne", self.go_listaConsegne, gestoreConsegna))
         hlayout.addWidget(self.get_generic_button("Visualizza lista ritiri", self.go_listaRitiri, gestoreRitiro))
