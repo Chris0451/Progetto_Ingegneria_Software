@@ -179,6 +179,10 @@ class GestoreRitiro():
         return None
     
     def depositaRitiriPositivi(self):
+        for ritiro in self.listaRitiriPositivi:
+            self.modificaStatoRitiro(ritiro, "In deposito")
+        for ritiro in self.listaColliPositivi:
+            self.modificaStatoRitiro(ritiro, "In deposito")
         self.listaRitiriPositivi.clear()
         self.listaColliPositivi.clear()
         

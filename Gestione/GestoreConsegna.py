@@ -84,6 +84,11 @@ class GestoreConsegna():
         return False
     
     def depositaConsegneNegative(self):
+        for consegna in self.listaConsegneNegative:
+            self.modificaStatoConsegna(consegna, "Ritorno in deposito")
+        for consegna in self.listaColliNegativi:
+            self.modificaStatoConsegna(consegna, "Ritorno in deposito")
+        self.incassoContrassegno = 0.0
         self.listaColliNegativi.clear()
         self.listaConsegneNegative.clear()
 
