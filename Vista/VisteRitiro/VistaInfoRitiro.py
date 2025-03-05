@@ -27,6 +27,6 @@ class VistaInfoRitiro(QWidget):
             vlayout.addWidget(info_ritiro)
         elif self.tipo == "Collo" and self.tipoLista == "Lista Negativa":
             ritiro_selezionato = self.gestoreRitiro.getColloNegativoByCodice(self.codice)
-            info_ritiro = QLabel(ritiro_selezionato.getInfoPaccoRitiro())
+            info_ritiro = QLabel(ritiro_selezionato.getInfoColloRitiro())
             vlayout.addWidget(info_ritiro)
         self.setLayout(vlayout)

@@ -1,19 +1,19 @@
 ["1", "Elettronica", 20.0, 30.0, 
  [["Alberto", "Festa", "AF200803H", "3773821832", "alberto.festa@example.com", "CL0001", 
-   ["Via Michele Fazioli", 1, "Ancona", "AN", 66019]], 
+   ["Via Michele Fazioli", 1, "Ancona", "AN", "66019"]], 
   "F000", "Festa Group", "08:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
  [["Cristian", "Di Cintio", "CD201103K", "3893821832", "cristian.dc@example.com", "CL0002", 
-   ["Via Bartolo", 1, "Ancona", "AN", 66019]], 
+   ["Via Bartolo", 1, "Ancona", "AN", "66019"]], 
   "F001", "DC Group", "08:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
  ["R220", "05/02/2025", "15:00", "Da ritirare"]
 ]
 ***********
 ["2", "Elettronica", 30.0, 40.0, 
  [["Enrico", "Corradini", "EC200894W", "3993821832", "enrico.corradini@example.com", "CL0003", 
-   ["Via Gatti Obesi", 1, "Napoli", "NA", 67000]], 
+   ["Via Gatti Obesi", 1, "Napoli", "NA", "67000"]], 
   "F002", "Corradini Group", "08:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
  [["Federico", "Di Giovannangelo", "FD201003Z", "3003821832", "fede.dg@example.com", "CL0004", 
-   ["Via Sirolo", 1, "Sirolo", "AN", 66020]], 
+   ["Via Sirolo", 1, "Sirolo", "AN", "66020"]], 
   "F003", "DG Group", "08:30", "18:30", ["Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi"]],
  ["R221", "05/02/2025", "14:00", "Da ritirare"]
 ]

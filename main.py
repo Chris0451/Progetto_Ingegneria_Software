@@ -11,7 +11,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     gestoreConsegna = GestoreConsegna()
     gestoreRitiro = GestoreRitiro()
-    corriere = Corriere("Chris", "DC", "CF", "32432432", "corriere@email.com", "CDM1")
+    corriere = Corriere("Cristian", "Di Cintio", "CF", "32432432", "corriere@email.com", "CDM1","80100")
     vista_corriere = VistaAccessoCorriere(gestoreConsegna, gestoreRitiro, corriere)
     vista_corriere.show()
     sys.exit(app.exec())

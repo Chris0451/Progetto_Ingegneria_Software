@@ -29,7 +29,7 @@ class VistaRitiriPositivi(QWidget):
         self.listaRitiriPositivi.setCurrentItem(None)
         self.info_ritiro.clicked.connect(lambda: self.show_selected_info(self.gestoreRitiro))
         self.indietro.clicked.connect(self.close)
-        
+        self.indietro.clicked.connect(self.submit_chiusura)
         vlayout.addWidget(self.label)
         vlayout.addWidget(self.listaRitiriPositivi)
         hlayout.addWidget(self.info_ritiro)
@@ -56,3 +56,5 @@ class VistaRitiriPositivi(QWidget):
         except IndexError:
             print("INDEX ERROR")
             return
+    def submit_chiusura(self):
+        self.close()

@@ -81,6 +81,7 @@ class LettoreFile:
                             pacchi.append(pacco)
                         except (SyntaxError, ValueError) as e:
                             print(f"Errore nel parsing del record: {record} - {e}")
+            file.close()
         except FileNotFoundError:
             print("Errore: Il file listaConsegne.txt non è stato trovato.")
         
@@ -102,6 +103,7 @@ class LettoreFile:
                             pacchi.append(pacco)
                         except (SyntaxError, ValueError) as e:
                             print(f"Errore nel parsing del record: {record} - {e}")
+            file.close()
         except FileNotFoundError:
             print("Errore: Il file listaRitiri.txt non è stato trovato.")
         
@@ -129,7 +131,7 @@ class LettoreFile:
     def leggi_lista_colli(self):
         with open("Dati/listaColliRitiri.txt", "r") as file:
             contenuto = file.read()
-        
+        file.close()
         # Separiamo le istanze di Collo usando "***********"
         colli_raw = contenuto.split("***********")
         colli = []
@@ -180,7 +182,7 @@ class LettoreFile:
         
         with open("Dati/listaColliConsegnare.txt", "r") as file:
             contenuto = file.read()
-        
+        file.close()
         # Separiamo le istanze di Collo usando "***********"
         colli_raw = contenuto.split("***********")
         colli = []

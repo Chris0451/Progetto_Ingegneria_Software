@@ -6,38 +6,12 @@ from datetime import datetime
 
 class GestoreRitiro():
     def __init__(self):
-        
         self.listaRitiriLettura = LettoreFile().leggi_ritiri()
         self.listaColliRitiriLettura = LettoreFile().leggi_lista_colli()
         self.listaRitiriPositivi = []
         self.listaRitiriNegativi = []
         self.listaColliPositivi = []
         self.listaColliNegativi = []
-
-    
-    def ricercaRitiroByCodice(self, codice):
-        for ritiro in self.listaRitiriLettura:
-            if codice == ritiro.datiRitiro.codiceRitiro:
-                return True
-        return False
-    
-    def ricercaColloByCodice(self, codice):
-        for collo in self.listaColliRitiriLettura:
-            if codice == collo.datiRitiro.codiceRitiro:
-                return True
-        return False
-    
-    def ricercaRitiroLettura(self, ritiro):
-        if ritiro in self.listaRitiriLettura:
-            
-            return True
-        return False
-    
-    def ricercaColloLettura(self, collo):
-        if collo in self.listaColliRitiriLettura:
-            
-            return True
-        return False
     
     def confermaRitiro(self, ritiro_confermato):
         if isinstance(ritiro_confermato, Pacco):
@@ -120,6 +94,32 @@ class GestoreRitiro():
                 self.getColloLettura(ritiro).datiRitiro.setStatoRitiro(nuovo_stato)
         return False
     
+
+    def ricercaRitiroByCodice(self, codice):
+        for ritiro in self.listaRitiriLettura:
+            if codice == ritiro.datiRitiro.codiceRitiro:
+                return True
+        return False
+    
+    def ricercaColloByCodice(self, codice):
+        for collo in self.listaColliRitiriLettura:
+            if codice == collo.datiRitiro.codiceRitiro:
+                return True
+        return False
+    
+    def ricercaRitiroLettura(self, ritiro):
+        if ritiro in self.listaRitiriLettura:
+            
+            return True
+        return False
+    
+    def ricercaColloLettura(self, collo):
+        if collo in self.listaColliRitiriLettura:
+            
+            return True
+        return False
+
+    
     def ricercaRitiroPositivo(self, ritiro):
         if ritiro in self.listaRitiriPositivi:
             return True
@@ -130,6 +130,7 @@ class GestoreRitiro():
             return True
         return False
 
+    ###############################################
     
     def getRitiroLetturaByCodice(self, codice):
         for ritiro in self.listaRitiriLettura:
@@ -166,7 +167,6 @@ class GestoreRitiro():
                 return ritiro
         return None
 
-    
     def getColloLetturaByCodice(self, codice):
         for collo in self.listaColliRitiriLettura:
             if codice == collo.datiRitiro.codiceRitiro:
@@ -176,12 +176,6 @@ class GestoreRitiro():
     def getColloLettura(self, collo):
         if collo in self.listaColliRitiriLettura:
             return collo
-        return None
-
-    def getColloLetturaByCodice(self, codice):
-        for collo in self.listaColliRitiriLettura:
-            if codice == collo.datiRitiro.codiceRitiro:
-                return collo
         return None
     
     def depositaRitiriPositivi(self):

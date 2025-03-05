@@ -11,7 +11,7 @@ class VistaAccessoCorriere(QWidget):
         super().__init__()
         self.gestoreConsegna = gestoreConsegna
         self.gestoreRitiro = gestoreRitiro
-        label_corriere = QLabel(f"Ciao {corriere.nome} - Codice Corriere: {corriere.identificativo}")
+        label_corriere = QLabel(f"Ciao {corriere.nome} - Partita IVA Corriere: {corriere.partitaIVA}")
         vlayout = QVBoxLayout()
         hlayout = QHBoxLayout()
         label_corriere.setStyleSheet("font-size: 15px; font-family: Arial; font-weight: bold")
